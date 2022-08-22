@@ -2,7 +2,15 @@
   system ? builtins.currentSystem }:
 
 let inherit (pkgs) lib;
-    releases = builtins.fromJSON (lib.strings.fileContents ./sources.json);
+  releases = builtins.fromJSON (lib.strings.fileContents ./sources.json);
+  installPhase = ''
+    mkdir -p $out/{doc,bin,lib}
+    [ -d docs ] && cp -r docs/* $out/doc
+    [ -d doc ] && cp -r doc/* $out/doc
+    cp -r lib/* $out/lib
+    cp zig $out/bin/zig
+  '';
+
 in lib.attrsets.mapAttrs (k: v: 
   if k == "master" then
     lib.attrsets.mapAttrs (k: v:
@@ -15,12 +23,7 @@ in lib.attrsets.mapAttrs (k: v:
         dontConfigure = true;
         dontBuild = true;
         dontFixup = true;
-        installPhase = ''
-          mkdir -p $out/{doc,bin,lib}
-          cp -r docs/* $out/doc
-          cp -r lib/* $out/lib
-          cp zig $out/bin/zig
-        '';
+        installPhase = installPhase;
       }))
       v
   else
@@ -33,14 +36,6 @@ in lib.attrsets.mapAttrs (k: v:
       dontConfigure = true;
       dontBuild = true;
       dontFixup = true;
-      installPhase = ''
-        mkdir -p $out/{doc,bin,lib}
-        cp -r ${if k == "0.6.0" then "doc/*"
-                else
-                  if k == "0.7.0" then "langref.html"
-                  else "docs/*"} $out/doc
-        cp -r lib/* $out/lib
-        cp zig $out/bin/zig
-      '';
+      installPhase = installPhase;
     })
   releases
