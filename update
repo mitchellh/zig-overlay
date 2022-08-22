@@ -1,0 +1,57 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -p ruby -i ruby
+
+require 'net/http'
+require 'json'
+require 'pathname'
+require 'fileutils'
+
+ZIG_URI = URI("https://ziglang.org/download/index.json")
+DEFAULT_SYSTEMS = ["x86_64-linux", "aarch64-linux", "aarch64-darwin", "x86_64-darwin"]
+
+response = JSON.parse(Net::HTTP.get(ZIG_URI))
+sources = if Pathname.new("sources.json").exist?
+            JSON.parse(File.read("sources.json"))
+          else
+            { "master" => {} }
+          end
+
+# Update versions
+response.each do |k, v|
+  unless k == "master"
+    sources[k] = DEFAULT_SYSTEMS.to_h do |system|
+      data = if system == "x86_64-darwin"
+               response[k]["x86_64-macos"] or {}
+             elsif system == "aarch64-darwin"
+               response[k]["aarch64-macos"] or {}
+             else
+               response[k][system] or {}
+             end
+      [system, { "url" => data["tarball"],
+                 "version" => k,
+                 "sha256" => data["shasum"] }]
+    end
+  end
+end
+
+# Update master
+sources["master"][response["master"]["date"]] = DEFAULT_SYSTEMS.to_h do |system|
+  data = if system == "x86_64-darwin"
+           response["master"]["x86_64-macos"]
+         elsif system == "aarch64-darwin"
+           response["master"]["aarch64-macos"]
+         else
+           response["master"][system]
+         end
+  [system, { "url" => data["tarball"],
+             "version" => response["master"]["version"],
+             "sha256" => data["shasum"] }]
+end
+sources["master"]["latest"] = sources["master"][response["master"]["date"]]
+
+FileUtils.cp "sources.json", "sources.json.bak"
+File.write "sources.json", JSON.pretty_generate(sources)
+
+# Local Variables:
+# mode: ruby
+# End:

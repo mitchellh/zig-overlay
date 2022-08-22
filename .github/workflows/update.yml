@@ -1,0 +1,20 @@
+name: update-sources
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+jobs:
+  update-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: cachix/install-nix-action@v12
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: ./update
+      - run: "git config user.email mitchellh@users.noreply.github.com"
+      - run: "git config user.name zig-overlay"
+      - run: "git add -A"
+      - run: "git commit -m 'update sources.json' | true"
+      - run: "git push -u origin main"
+
