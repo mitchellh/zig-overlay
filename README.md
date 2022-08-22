@@ -29,7 +29,7 @@ In your `flake.nix` file:
 In a shell:
 
 ```sh
-# run the latest version (0.7.1)
+# run the latest version
 $ nix run 'github:mitchellh/zig-overlay'
 # open a shell with master version dated 2021-02-13 (oldest version available)
 $ nix shell 'github:mitchellh/zig-overlay#master."2021-02-13"'
@@ -46,12 +46,14 @@ pinning of the nixpkgs repository, and a `system` argument which defaults to
 
 ```nix
 # It is a good idea to use an exact commit in place of 'main' here.
-let zigf = fetchTarball "https://github.com/mitchellh/zig-overlay/archive/main.tar.gz" in
-# If you're using home-manager
-home.packages = [ zigf.master.latest ]; # or any available version
-# If you're using NixOS
-users.user.<username>.packages = [ zigf.master.latest ]; # or any available version
-# ...the rest of your configuration
+let
+  zigf = fetchTarball "https://github.com/mitchellh/zig-overlay/archive/main.tar.gz"
+in
+  # If you're using home-manager
+  home.packages = [ zigf.master.latest ]; # or any available version
+
+  # If you're using NixOS
+  users.user.<username>.packages = [ zigf.master.latest ]; # or any available version
 ```
 
 ## Thanks
