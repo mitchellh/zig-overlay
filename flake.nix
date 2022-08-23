@@ -41,5 +41,11 @@
       overlays.default = final: prev: {
         zigpkgs = outputs.packages.${prev.system};
       };
+
+      # Templates for use with zig flake init
+      templates.compiler-dev = {
+        path = ./templates/compiler-dev;
+        description = "A development environment for Zig compiler development.";
+      };
     };
 }
