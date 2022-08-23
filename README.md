@@ -15,10 +15,12 @@ The flake outputs are documented in `flake.nix` but an overview:
   * `packages.master-<date>` for a nightly release
   * `overlay` is an overlay that adds `zigpkgs` to be the packages
     exposed by this flake
+  * `template.compiler-dev` to setup a development environment for Zig
+    compiler development.
 
 ## Usage
 
-### Flake Support
+### Flake
 
 In your `flake.nix` file:
 
@@ -41,6 +43,26 @@ $ nix run 'github:mitchellh/zig-overlay'
 $ nix shell 'github:mitchellh/zig-overlay#master-2021-02-13'
 # open a shell with latest nightly version
 $ nix shell 'github:mitchellh/zig-overlay#master'
+```
+
+### Compiler Development
+
+This flake outputs a template that makes it easy to work on the Zig
+compiler itself. If you're looking to contribute to the Zig compiler,
+here are the easy steps to setup a working development environment:
+
+```sh
+# clone zig and go into that directory
+$ git clone https://github.com/ziglang/zig.git
+$ cd zig
+# setup the template
+$ nix flake init -t 'github.com:mitchellh/zig-overlay#compiler-dev'
+# Two options:
+# (1) start a shell, this forces bash
+$ nix develop
+# (2) If you have direnv installed, you can start the shell environment
+# in your active shell (fish, zsh, etc.):
+$ direnv allow
 ```
 
 ## Thanks
