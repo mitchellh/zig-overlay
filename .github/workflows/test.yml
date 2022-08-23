@@ -1,0 +1,15 @@
+on: [push, pull_request]
+name: Test
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.2
+      - uses: cachix/install-nix-action@v17
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix flake check
+
+      # Verify the update script WORKS but we don't actually commit anything
+      # in the test job.
+      - run: ./update
