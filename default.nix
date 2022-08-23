@@ -26,7 +26,9 @@ let
   # The packages that are tagged releases
   taggedPackages = lib.attrsets.mapAttrs
     (k: v: mkBinaryInstall { inherit (v.${system}) version url sha256; })
-    (builtins.removeAttrs sources ["master"]);
+    (lib.attrsets.filterAttrs
+      (k: v: (builtins.hasAttr system v) && (v.${system}.url != null))
+      (builtins.removeAttrs sources ["master"]));
 
   # The master packages
   masterPackages = lib.attrsets.mapAttrs'
