@@ -1,5 +1,6 @@
 #!/usr/bin/env nix-shell
 #! nix-shell -p curl jq -i sh
+set -e
 
 # Build our new sources.json
 curl -s 'https://ziglang.org/download/index.json' | jq '
