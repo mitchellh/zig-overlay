@@ -4,12 +4,15 @@ This repository is a Nix flake packaging the [Zig](https://ziglang.com)
 compiler. The flake mirrors the binaries built officially by Zig and
 does not build them from source.
 
-Provided packages:
+This repository is meant to be consumed primarily as a flake but the
+`default.nix` can also be imported directly by non-flakes, too.
 
-  * Nightly versions updated daily (`.master.<date>`), starting from version
-    `0.8.0-dev.1140+9270aae07` dated 2021-02-13, and latest master
-	(`.master.latest`) for the sake of convenience.
-  * Release versions.
+The flake outputs are documented in `flake.nix` but an overview:
+
+  * Default package and "app" is the latest released version
+  * `packages.<version>` for a tagged release
+  * `packages.master.<date>` for a nightly release
+  * `packages.master.latest` for the latest nightly release
 
 ## Usage
 
@@ -20,6 +23,7 @@ In your `flake.nix` file:
 ```nix
 {
   inputs.zig.url = "github:mitchellh/zig-overlay";
+
   outputs = { self, zig, ... }: {
     ...
   };
@@ -29,31 +33,12 @@ In your `flake.nix` file:
 In a shell:
 
 ```sh
-# run the latest version
+# run the latest released version
 $ nix run 'github:mitchellh/zig-overlay'
 # open a shell with master version dated 2021-02-13 (oldest version available)
 $ nix shell 'github:mitchellh/zig-overlay#master."2021-02-13"'
 # open a shell with latest master version
 $ nix shell 'github:mitchellh/zig-overlay#master.latest'
-```
-
-### No Flake Support
-
-Import in your project as you would normally (`pkgs.fetchFromGitHub` or
-`builtins.fetchgit`). The `default.nix` exposes a `pkgs` argument for possible
-pinning of the nixpkgs repository, and a `system` argument which defaults to
-`builtins.currentSystem`.
-
-```nix
-# It is a good idea to use an exact commit in place of 'main' here.
-let
-  zigf = fetchTarball "https://github.com/mitchellh/zig-overlay/archive/main.tar.gz"
-in
-  # If you're using home-manager
-  home.packages = [ zigf.master.latest ]; # or any available version
-
-  # If you're using NixOS
-  users.user.<username>.packages = [ zigf.master.latest ]; # or any available version
 ```
 
 ## Thanks
