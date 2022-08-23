@@ -11,8 +11,10 @@ The flake outputs are documented in `flake.nix` but an overview:
 
   * Default package and "app" is the latest released version
   * `packages.<version>` for a tagged release
-  * `packages.master.<date>` for a nightly release
-  * `packages.master.latest` for the latest nightly release
+  * `packages.master` for the latest nightly release
+  * `packages.master-<date>` for a nightly release
+  * `overlay` is an overlay that adds `zigpkgs` to be the packages
+    exposed by this flake
 
 ## Usage
 
@@ -35,10 +37,10 @@ In a shell:
 ```sh
 # run the latest released version
 $ nix run 'github:mitchellh/zig-overlay'
-# open a shell with master version dated 2021-02-13 (oldest version available)
-$ nix shell 'github:mitchellh/zig-overlay#master."2021-02-13"'
-# open a shell with latest master version
-$ nix shell 'github:mitchellh/zig-overlay#master.latest'
+# open a shell with nightly version dated 2021-02-13 (oldest version available)
+$ nix shell 'github:mitchellh/zig-overlay#master-2021-02-13'
+# open a shell with latest nightly version
+$ nix shell 'github:mitchellh/zig-overlay#master'
 ```
 
 ## Thanks

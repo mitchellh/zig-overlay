@@ -23,25 +23,26 @@ let
     '';
   };
 
+  # The packages that are tagged releases
+  taggedPackages = lib.attrsets.mapAttrs
+    (k: v: mkBinaryInstall { inherit (v.${system}) version url sha256; })
+    (builtins.removeAttrs sources ["master"]);
+
+  # The master packages
+  masterPackages = lib.attrsets.mapAttrs'
+    (k: v: lib.attrsets.nameValuePair
+      (if k == "latest" then "master" else ("master-" + k))
+      (mkBinaryInstall { inherit (v.${system}) version url sha256; })
+    )
+    sources.master;
+
   # This determines the latest /released/ version.
   latest = lib.lists.last (
     builtins.sort
       (x: y: (builtins.compareVersions x y) < 0)
-      (builtins.filter (x: x != "master") (builtins.attrNames sources))
+      (builtins.attrNames taggedPackages)
   );
-
-  # This is the full list of packages
-  packages = lib.attrsets.mapAttrs (k: v:
-    if k == "master" then
-      lib.attrsets.mapAttrs (k: v: (mkBinaryInstall {
-        inherit (v.${system}) version url sha256;
-      })) v
-    else
-      mkBinaryInstall {
-        inherit (v.${system}) version url sha256;
-      })
-      sources;
 in
   # We want the packages but also add a "default" that just points to the
   # latest released version.
-  packages // { "default" = packages.${latest}; }
+  taggedPackages // masterPackages // { "default" = taggedPackages.${latest}; }
