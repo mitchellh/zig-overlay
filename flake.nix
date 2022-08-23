@@ -14,8 +14,9 @@
       let pkgs = nixpkgs.legacyPackages.${system};
       in rec {
         packages = import ./default.nix { inherit system pkgs; };
-        defaultPackage = packages."0.9.1";
-        apps.zig = flake-utils.lib.mkApp { drv = defaultPackage; };
-        defaultApp = apps.zig;
+        apps = rec {
+          default = apps.zig;
+          zig = flake-utils.lib.mkApp { drv = packages.default; };
+        };
       });
 }
