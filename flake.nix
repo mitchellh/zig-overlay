@@ -9,7 +9,7 @@
   outputs = { self, nixpkgs, flake-utils, ... }:
     # List of systems where binaries are provided.
     let
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+      systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ];
     in flake-utils.lib.eachSystem systems (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in rec {
