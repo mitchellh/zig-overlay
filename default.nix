@@ -1,7 +1,8 @@
 { pkgs ? import <nixpkgs> {},
   system ? builtins.currentSystem }:
 
-let inherit (pkgs) lib;
+let
+  inherit (pkgs) lib;
   releases = builtins.fromJSON (lib.strings.fileContents ./sources.json);
   installPhase = ''
     mkdir -p $out/{doc,bin,lib}
@@ -10,8 +11,7 @@ let inherit (pkgs) lib;
     cp -r lib/* $out/lib
     cp zig $out/bin/zig
   '';
-
-in lib.attrsets.mapAttrs (k: v: 
+in lib.attrsets.mapAttrs (k: v:
   if k == "master" then
     lib.attrsets.mapAttrs (k: v:
       (pkgs.stdenv.mkDerivation {

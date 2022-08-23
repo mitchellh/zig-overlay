@@ -1,57 +1,41 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -p ruby -i ruby
+#! nix-shell -p curl jq -i sh
 
-require 'net/http'
-require 'json'
-require 'pathname'
-require 'fileutils'
+# Build our new sources.json
+curl -s 'https://ziglang.org/download/index.json' | jq '
+["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos"] as $targets |
+def todarwin(x): x | gsub("macos"; "darwin");
+def toentry(vsn; x):
+  [(vsn as $version |
+    .value |
+    to_entries[] |
+    select(.key as $key | any($targets[]; . == $key)) | {
+      (todarwin(.key)): {
+          "url": .value.tarball,
+          "sha256": .value.shasum,
+          "version": $version,
+      }
+    }
+  )] | add;
 
-ZIG_URI = URI("https://ziglang.org/download/index.json")
-DEFAULT_SYSTEMS = ["x86_64-linux", "aarch64-linux", "aarch64-darwin", "x86_64-darwin"]
+to_entries[] | {
+    (.key): (
+        if (.key != "master") then
+          toentry(.key; .value)
+        else {
+          "latest": toentry(.value.version; .value),
+          (.value.date): toentry(.value.version; .value),
+        } end
+    )
+}
+' > sources.new.json
 
-response = JSON.parse(Net::HTTP.get(ZIG_URI))
-sources = if Pathname.new("sources.json").exist?
-            JSON.parse(File.read("sources.json"))
-          else
-            { "master" => {} }
-          end
+# For debugging
+# cat sources.new.json
+# exit
 
-# Update versions
-response.each do |k, v|
-  unless k == "master"
-    sources[k] = DEFAULT_SYSTEMS.to_h do |system|
-      data = if system == "x86_64-darwin"
-               response[k]["x86_64-macos"] or {}
-             elsif system == "aarch64-darwin"
-               response[k]["aarch64-macos"] or {}
-             else
-               response[k][system] or {}
-             end
-      [system, { "url" => data["tarball"],
-                 "version" => k,
-                 "sha256" => data["shasum"] }]
-    end
-  end
-end
+# Copy the old file since jq can't modify in-place. This is also a backup.
+cp sources.json sources.old.json
 
-# Update master
-sources["master"][response["master"]["date"]] = DEFAULT_SYSTEMS.to_h do |system|
-  data = if system == "x86_64-darwin"
-           response["master"]["x86_64-macos"]
-         elsif system == "aarch64-darwin"
-           response["master"]["aarch64-macos"]
-         else
-           response["master"][system]
-         end
-  [system, { "url" => data["tarball"],
-             "version" => response["master"]["version"],
-             "sha256" => data["shasum"] }]
-end
-sources["master"]["latest"] = sources["master"][response["master"]["date"]]
-
-FileUtils.cp "sources.json", "sources.json.bak"
-File.write "sources.json", JSON.pretty_generate(sources)
-
-# Local Variables:
-# mode: ruby
-# End:
+# Recursive merge
+jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
