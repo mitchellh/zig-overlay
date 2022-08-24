@@ -56,7 +56,7 @@ here are the easy steps to setup a working development environment:
 $ git clone https://github.com/ziglang/zig.git
 $ cd zig
 # setup the template
-$ nix flake init -t 'github.com:mitchellh/zig-overlay#compiler-dev'
+$ nix flake init -t 'github:mitchellh/zig-overlay#compiler-dev'
 # Two options:
 # (1) start a shell, this forces bash
 $ nix develop
@@ -67,6 +67,8 @@ $ direnv allow
 
 ## Thanks
 
-This repository is originally hosted by the username `arqv`. This user
-and repository disappeared at some point and I had a local checkout so
-I've forked it, modified it, and reuploaded it here.
+The `sources.json` file was originally from another Zig overlay repository
+hosted by the username `arqv`. This user and repository was deleted at some
+point, so I started a new flake based on the same `sources.json` format
+they used so I could inherit the history. Thank you for compiling nightly
+release information since 2021!
