@@ -36,24 +36,24 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "version": "0.10.0-dev.3836+c5f1b3224",
-        "sha256": "2986cf501a5d659d193d21c416651c93d1216c3311599f29b86c1fcada55dc50"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "version": "0.10.0-dev.3838+77f31ebbb",
+        "sha256": "a9a6ab59e70017fe33d1fc3f366383825941fe2f97e12ff4d54c9ef1d5c9accf"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "version": "0.10.0-dev.3836+c5f1b3224",
-        "sha256": "f90fa6b8d0b5292b60467b77239e64d58e71b1cab330db23681efdc7afd45f4b"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "version": "0.10.0-dev.3838+77f31ebbb",
+        "sha256": "33ec5b5f2b8cfe2050786b173d3027c95cc0ad43b0501bf07f6f067f1b98c80a"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "version": "0.10.0-dev.3836+c5f1b3224",
-        "sha256": "a833e7bddea968ecd40f51e38cc923026659c62da3213c7043c6b34c02bb3c0d"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "version": "0.10.0-dev.3838+77f31ebbb",
+        "sha256": "62747d1e923fb59a59e5d7c1d3ca85b4d5f16708233baecb1182c2a001d8a8f3"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "version": "0.10.0-dev.3836+c5f1b3224",
-        "sha256": "dafc41cd7086d3635c7fb8e83d8d8f7b1fd1921784969050c637313c07bb46ff"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "version": "0.10.0-dev.3838+77f31ebbb",
+        "sha256": "9e45cde60b8894968b868e910eb9b6649b50add9c0febfd9860da0180a1d44d3"
       }
     },
     "2021-02-20": {
@@ -7811,24 +7811,24 @@
     },
     "2022-09-01": {
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "sha256": "a833e7bddea968ecd40f51e38cc923026659c62da3213c7043c6b34c02bb3c0d",
-        "version": "0.10.0-dev.3836+c5f1b3224"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "sha256": "62747d1e923fb59a59e5d7c1d3ca85b4d5f16708233baecb1182c2a001d8a8f3",
+        "version": "0.10.0-dev.3838+77f31ebbb"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "sha256": "dafc41cd7086d3635c7fb8e83d8d8f7b1fd1921784969050c637313c07bb46ff",
-        "version": "0.10.0-dev.3836+c5f1b3224"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "sha256": "9e45cde60b8894968b868e910eb9b6649b50add9c0febfd9860da0180a1d44d3",
+        "version": "0.10.0-dev.3838+77f31ebbb"
       },
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "sha256": "2986cf501a5d659d193d21c416651c93d1216c3311599f29b86c1fcada55dc50",
-        "version": "0.10.0-dev.3836+c5f1b3224"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "sha256": "a9a6ab59e70017fe33d1fc3f366383825941fe2f97e12ff4d54c9ef1d5c9accf",
+        "version": "0.10.0-dev.3838+77f31ebbb"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.3836+c5f1b3224.tar.xz",
-        "sha256": "f90fa6b8d0b5292b60467b77239e64d58e71b1cab330db23681efdc7afd45f4b",
-        "version": "0.10.0-dev.3836+c5f1b3224"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.3838+77f31ebbb.tar.xz",
+        "sha256": "33ec5b5f2b8cfe2050786b173d3027c95cc0ad43b0501bf07f6f067f1b98c80a",
+        "version": "0.10.0-dev.3838+77f31ebbb"
       }
     }
   },
