@@ -65,6 +65,24 @@ $ nix develop
 $ direnv allow
 ```
 
+## FAQ
+
+### Why is a Nightly Missing?
+
+There are two possible reasons:
+
+1. The Zig download JSON that is used to generate this overlay only shows
+the latest _master_ release. It doesn't keep track of historical releases.
+If this overlay wasn't running or didn't exist at the time of a release,
+we could miss a day. This is why historical dates beyond a certain point
+don't exist; they predate this overlay (or original overlays this derives
+from).
+
+2. The official Zig CI only generates a master release if the CI runs 
+full green. During certain periods of development, a full day may go by
+where the master branch of the Zig compiler is broken. In this scenario,
+a master build (aka "nightly") is not built or released at all.
+
 ## Thanks
 
 The `sources.json` file was originally from another Zig overlay repository
