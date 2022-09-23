@@ -37,7 +37,7 @@
     outputs
     // {
       # Overlay that can be imported so you can access the packages
-      # using zigpkgs.master.latest or whatever you'd like.
+      # using zigpkgs.master or whatever you'd like.
       overlays.default = final: prev: {
         zigpkgs = outputs.packages.${prev.system};
       };
