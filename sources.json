@@ -36,24 +36,24 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "version": "0.10.0-dev.4333+f5f28e0d2",
-        "sha256": "5bed8ffe60b3bfbeb57d11b7524c279082e59486f0131211eb2287c4dc7eae90"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "version": "0.10.0-dev.4339+9b45dc160",
+        "sha256": "a5e6030822d9afc59e61fdb0b3038fced26f9cd347d359d5caf163b55e4b4cff"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "version": "0.10.0-dev.4333+f5f28e0d2",
-        "sha256": "d72275b65f7595058149509178331246129b5c61f6bb4788fefac781a2fb4a4f"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "version": "0.10.0-dev.4339+9b45dc160",
+        "sha256": "a75226837a55ad7dceda402971ecc113b739bd3872dd3bbe9c5208c7822ea213"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "version": "0.10.0-dev.4333+f5f28e0d2",
-        "sha256": "26627636cfb19e0b4f04a3fab74899b951880efc202d5754c9fcf9b6b65b3d91"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "version": "0.10.0-dev.4339+9b45dc160",
+        "sha256": "e8e67db5d5bb9cbf20f5f767d4666a2822bef8988b5b47b85b8e32e9d10c611f"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "version": "0.10.0-dev.4333+f5f28e0d2",
-        "sha256": "140884bb29f8dff53181aa1fbb84ec2d19fb47d30b5a1850b56612f8ff0a432e"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "version": "0.10.0-dev.4339+9b45dc160",
+        "sha256": "d7801b887e5b0dc7b7249027e92a05cf7457be5d4ffaf047c4721b477e96af7b"
       }
     },
     "2021-02-20": {
@@ -8361,24 +8361,24 @@
     },
     "2022-10-14": {
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "sha256": "26627636cfb19e0b4f04a3fab74899b951880efc202d5754c9fcf9b6b65b3d91",
-        "version": "0.10.0-dev.4333+f5f28e0d2"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "sha256": "e8e67db5d5bb9cbf20f5f767d4666a2822bef8988b5b47b85b8e32e9d10c611f",
+        "version": "0.10.0-dev.4339+9b45dc160"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "sha256": "140884bb29f8dff53181aa1fbb84ec2d19fb47d30b5a1850b56612f8ff0a432e",
-        "version": "0.10.0-dev.4333+f5f28e0d2"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "sha256": "d7801b887e5b0dc7b7249027e92a05cf7457be5d4ffaf047c4721b477e96af7b",
+        "version": "0.10.0-dev.4339+9b45dc160"
       },
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "sha256": "5bed8ffe60b3bfbeb57d11b7524c279082e59486f0131211eb2287c4dc7eae90",
-        "version": "0.10.0-dev.4333+f5f28e0d2"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "sha256": "a5e6030822d9afc59e61fdb0b3038fced26f9cd347d359d5caf163b55e4b4cff",
+        "version": "0.10.0-dev.4339+9b45dc160"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4333+f5f28e0d2.tar.xz",
-        "sha256": "d72275b65f7595058149509178331246129b5c61f6bb4788fefac781a2fb4a4f",
-        "version": "0.10.0-dev.4333+f5f28e0d2"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4339+9b45dc160.tar.xz",
+        "sha256": "a75226837a55ad7dceda402971ecc113b739bd3872dd3bbe9c5208c7822ea213",
+        "version": "0.10.0-dev.4339+9b45dc160"
       }
     }
   },
