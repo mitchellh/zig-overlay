@@ -36,24 +36,24 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "version": "0.10.0-dev.4587+710e2e7f1",
-        "sha256": "1e627de09ca5bed64b34ae438afa502aaf7f47612429e3b53c9123e430b231b6"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "version": "0.10.0-dev.4588+9c0d975a0",
+        "sha256": "3f3be7ebe56d4c6fc46b1d384c5dc2abb709a0c5d7b75677ac505f37a91b10da"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "version": "0.10.0-dev.4587+710e2e7f1",
-        "sha256": "59b14dfc2e48443cc3386eb2bdbaf4e4918de5e7636c3cc9c3a207bc26c35f34"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "version": "0.10.0-dev.4588+9c0d975a0",
+        "sha256": "ea6812be9c5047c5926859152eb6a026aab1c7d87eb3add0e0b48b74ec4d76d8"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "version": "0.10.0-dev.4587+710e2e7f1",
-        "sha256": "8f7801b215be7c9888d6eee3c8617a43ab903bb1dca85ebf881c4df32cda203a"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "version": "0.10.0-dev.4588+9c0d975a0",
+        "sha256": "3f4a91d3aaaf8f1d9bf39f1135617543b19a69b767d764b9ddae1521221b4fc5"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "version": "0.10.0-dev.4587+710e2e7f1",
-        "sha256": "a7343fd648c58472b3fbc73ae193d931911df0d164a213c5e6941bbf1cd8c182"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "version": "0.10.0-dev.4588+9c0d975a0",
+        "sha256": "e86ed99115e3d6c4bed113e389a06980bbedbc23903a30e74af47408cc0e92c2"
       }
     },
     "2021-02-20": {
@@ -8647,24 +8647,24 @@
     },
     "2022-10-27": {
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "sha256": "8f7801b215be7c9888d6eee3c8617a43ab903bb1dca85ebf881c4df32cda203a",
-        "version": "0.10.0-dev.4587+710e2e7f1"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "sha256": "3f4a91d3aaaf8f1d9bf39f1135617543b19a69b767d764b9ddae1521221b4fc5",
+        "version": "0.10.0-dev.4588+9c0d975a0"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "sha256": "a7343fd648c58472b3fbc73ae193d931911df0d164a213c5e6941bbf1cd8c182",
-        "version": "0.10.0-dev.4587+710e2e7f1"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "sha256": "e86ed99115e3d6c4bed113e389a06980bbedbc23903a30e74af47408cc0e92c2",
+        "version": "0.10.0-dev.4588+9c0d975a0"
       },
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "sha256": "1e627de09ca5bed64b34ae438afa502aaf7f47612429e3b53c9123e430b231b6",
-        "version": "0.10.0-dev.4587+710e2e7f1"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "sha256": "3f3be7ebe56d4c6fc46b1d384c5dc2abb709a0c5d7b75677ac505f37a91b10da",
+        "version": "0.10.0-dev.4588+9c0d975a0"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4587+710e2e7f1.tar.xz",
-        "sha256": "59b14dfc2e48443cc3386eb2bdbaf4e4918de5e7636c3cc9c3a207bc26c35f34",
-        "version": "0.10.0-dev.4587+710e2e7f1"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.10.0-dev.4588+9c0d975a0.tar.xz",
+        "sha256": "ea6812be9c5047c5926859152eb6a026aab1c7d87eb3add0e0b48b74ec4d76d8",
+        "version": "0.10.0-dev.4588+9c0d975a0"
       }
     }
   },
