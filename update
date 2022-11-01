@@ -12,28 +12,26 @@ def toentry(vsn; x):
     to_entries[] |
     select(.key as $key | any($targets[]; . == $key)) | {
       (todarwin(.key)): {
-          "url": .value.tarball,
-          "sha256": .value.shasum,
-          "version": $version,
+        "url": .value.tarball,
+        "sha256": .value.shasum,
+        "version": $version,
       }
     }
-  )] | add;
+  )] | add | first(values, {});
 
-to_entries[] | {
+reduce to_entries[] as $entry ({}; . * (
+  $entry | {
     (.key): (
-        if (.key != "master") then
-          toentry(.key; .value)
-        else {
-          "latest": toentry(.value.version; .value),
-          (.value.date): toentry(.value.version; .value),
-        } end
+      if (.key != "master") then
+        toentry(.key; .value)
+      else {
+        "latest": toentry(.value.version; .value),
+        (.value.date): toentry(.value.version; .value),
+      } end
     )
-}
+  }
+))
 ' > sources.new.json
-
-# Merge all of the objects from the previous step. Maybe there is a way
-# to do this in one command (probably), but I don't know how!
-jq -s add sources.new.json > sources.new2.json
 
 # For debugging
 # cat sources.new.json
@@ -43,4 +41,4 @@ jq -s add sources.new.json > sources.new2.json
 cp sources.json sources.old.json
 
 # Recursive merge
-jq -s '.[0] * .[1]' sources.old.json sources.new2.json > sources.json
+jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
