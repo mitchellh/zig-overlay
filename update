@@ -4,7 +4,7 @@ set -e
 
 # Build our new sources.json
 curl -s 'https://ziglang.org/download/index.json' | jq '
-["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos"] as $targets |
+["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
 def toentry(vsn; x):
   [(vsn as $version |
@@ -31,6 +31,10 @@ to_entries[] | {
 }
 ' > sources.new.json
 
+# Merge all of the objects from the previous step. Maybe there is a way
+# to do this in one command (probably), but I don't know how!
+jq -s add sources.new.json > sources.new2.json
+
 # For debugging
 # cat sources.new.json
 # exit
@@ -39,4 +43,4 @@ to_entries[] | {
 cp sources.json sources.old.json
 
 # Recursive merge
-jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
+jq -s '.[0] * .[1]' sources.old.json sources.new2.json > sources.json
