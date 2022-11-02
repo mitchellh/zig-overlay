@@ -36,29 +36,29 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.6+2943df016.tar.xz",
-        "version": "0.11.0-dev.6+2943df016",
-        "sha256": "8f891579abf511aae7a1f54fdf57ea2c94d0993e9de1a9b4cedd3b03a943ee85"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "version": "0.11.0-dev.12+ebf9ffd34",
+        "sha256": "d3a674f4182e8e9561d1ec432209971c80bb45dfeff5a89c7808f43998aba6e9"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.6+2943df016.tar.xz",
-        "version": "0.11.0-dev.6+2943df016",
-        "sha256": "ad0fda0fb8046c2c24b04954c789fd05c0334bd3648eb1f6c0eba02da2ac977d"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "version": "0.11.0-dev.12+ebf9ffd34",
+        "sha256": "a00edf660557c72480850aa04634f3a783326b4f242e1a8b24342969dc863a69"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.6+2943df016.tar.xz",
-        "version": "0.11.0-dev.6+2943df016",
-        "sha256": "503bb686779cdc75970dca0cceb43336e6a7d570a639de9efb4eeb1a495dbcd4"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "version": "0.11.0-dev.12+ebf9ffd34",
+        "sha256": "b408bf7f5fba003835824a354424ac2b600254f7f238eeb086d03143e75b9c4b"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.6+2943df016.tar.xz",
-        "version": "0.11.0-dev.6+2943df016",
-        "sha256": "d8fe1ba2747734a25e176847e7ecf7f0c4927b5bed91ce99829ba90d7c09a494"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "version": "0.11.0-dev.12+ebf9ffd34",
+        "sha256": "1d5b78ed3be14635a4b7822c2cef0533b424b4cac6191ef455eade7b87083ecb"
       },
       "x86_64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.6+2943df016.zip",
-        "sha256": "4a1d402a79e1d8ea10b384e4053a2c86aba12f0ef07333b767a5cc6ee241f028",
-        "version": "0.11.0-dev.6+2943df016"
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.12+ebf9ffd34.zip",
+        "sha256": "c6cdb8bd17492cfd50bbaf6b4d53e7e2437430d8c019c2a6eae14c3f0ab771b7",
+        "version": "0.11.0-dev.12+ebf9ffd34"
       }
     },
     "2021-02-20": {
@@ -8790,6 +8790,33 @@
         "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.6+2943df016.tar.xz",
         "sha256": "ad0fda0fb8046c2c24b04954c789fd05c0334bd3648eb1f6c0eba02da2ac977d",
         "version": "0.11.0-dev.6+2943df016"
+      }
+    },
+    "2022-11-02": {
+      "x86_64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "sha256": "b408bf7f5fba003835824a354424ac2b600254f7f238eeb086d03143e75b9c4b",
+        "version": "0.11.0-dev.12+ebf9ffd34"
+      },
+      "aarch64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "sha256": "1d5b78ed3be14635a4b7822c2cef0533b424b4cac6191ef455eade7b87083ecb",
+        "version": "0.11.0-dev.12+ebf9ffd34"
+      },
+      "x86_64-windows": {
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.12+ebf9ffd34.zip",
+        "sha256": "c6cdb8bd17492cfd50bbaf6b4d53e7e2437430d8c019c2a6eae14c3f0ab771b7",
+        "version": "0.11.0-dev.12+ebf9ffd34"
+      },
+      "x86_64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "sha256": "d3a674f4182e8e9561d1ec432209971c80bb45dfeff5a89c7808f43998aba6e9",
+        "version": "0.11.0-dev.12+ebf9ffd34"
+      },
+      "aarch64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.12+ebf9ffd34.tar.xz",
+        "sha256": "a00edf660557c72480850aa04634f3a783326b4f242e1a8b24342969dc863a69",
+        "version": "0.11.0-dev.12+ebf9ffd34"
       }
     }
   },
