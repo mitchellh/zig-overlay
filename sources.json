@@ -36,29 +36,29 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.22+57dbeb90a.tar.xz",
-        "version": "0.11.0-dev.22+57dbeb90a",
-        "sha256": "f21e05e221ffcec8ba70f6cddeaa81c1743b93535e09c331544fc99f08b7dd7e"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "version": "0.11.0-dev.38+b40fc7018",
+        "sha256": "35b2bad6a734422c559244ba66f8db2079054422fd5e43eee9578e38f6279574"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.22+57dbeb90a.tar.xz",
-        "version": "0.11.0-dev.22+57dbeb90a",
-        "sha256": "02d0586e6467c75c0f9676e542e7866cedbb48a181ac24b51f698b5bd2e1dc83"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "version": "0.11.0-dev.38+b40fc7018",
+        "sha256": "ad309011d12ffd5bfc2c3a854dfacd6370a3f6aff1938a67cf9b81609ff177e1"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.22+57dbeb90a.tar.xz",
-        "version": "0.11.0-dev.22+57dbeb90a",
-        "sha256": "41b8e7a7419f5490048de9946e27ba56db1c9830fabc2eb3c38361f93417c2e7"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "version": "0.11.0-dev.38+b40fc7018",
+        "sha256": "8d30aad7d57c27c5a7367fc1f185b9c9eae291c447ab71c253f179a1ffb55a45"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.22+57dbeb90a.tar.xz",
-        "version": "0.11.0-dev.22+57dbeb90a",
-        "sha256": "3e4f1dc34a4879fe5a23439d2e4cddb964cb4bcdf23d81ba0179f1a5252e9bc2"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "version": "0.11.0-dev.38+b40fc7018",
+        "sha256": "039a909b8f8af29952e3cdea7a6e9ca6427bdb9c0e9b541c8aec636442709e39"
       },
       "x86_64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.22+57dbeb90a.zip",
-        "sha256": "da18242a8be0a2bd9aa3d877d235902ec0479f17852c21df5fa1ba43f7ab66fe",
-        "version": "0.11.0-dev.22+57dbeb90a"
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.38+b40fc7018.zip",
+        "sha256": "14aec6ce3f8db586dea30ae9c701d1e82fc04b1b24124a84412a24b6d4a14dc4",
+        "version": "0.11.0-dev.38+b40fc7018"
       }
     },
     "2021-02-20": {
@@ -8817,6 +8817,33 @@
         "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.22+57dbeb90a.tar.xz",
         "sha256": "02d0586e6467c75c0f9676e542e7866cedbb48a181ac24b51f698b5bd2e1dc83",
         "version": "0.11.0-dev.22+57dbeb90a"
+      }
+    },
+    "2022-11-03": {
+      "x86_64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "sha256": "8d30aad7d57c27c5a7367fc1f185b9c9eae291c447ab71c253f179a1ffb55a45",
+        "version": "0.11.0-dev.38+b40fc7018"
+      },
+      "aarch64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "sha256": "039a909b8f8af29952e3cdea7a6e9ca6427bdb9c0e9b541c8aec636442709e39",
+        "version": "0.11.0-dev.38+b40fc7018"
+      },
+      "x86_64-windows": {
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.38+b40fc7018.zip",
+        "sha256": "14aec6ce3f8db586dea30ae9c701d1e82fc04b1b24124a84412a24b6d4a14dc4",
+        "version": "0.11.0-dev.38+b40fc7018"
+      },
+      "x86_64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "sha256": "35b2bad6a734422c559244ba66f8db2079054422fd5e43eee9578e38f6279574",
+        "version": "0.11.0-dev.38+b40fc7018"
+      },
+      "aarch64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.38+b40fc7018.tar.xz",
+        "sha256": "ad309011d12ffd5bfc2c3a854dfacd6370a3f6aff1938a67cf9b81609ff177e1",
+        "version": "0.11.0-dev.38+b40fc7018"
       }
     }
   },
