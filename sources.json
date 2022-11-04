@@ -36,29 +36,29 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.48+678f3f6e6.tar.xz",
-        "version": "0.11.0-dev.48+678f3f6e6",
-        "sha256": "bec4fa4ff952e5704e208fa35f0c8cd1c60860a1772f103c910f2fa887505128"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "version": "0.11.0-dev.53+cbed6bb08",
+        "sha256": "ab9fa208957eee827d3ad549d28cdac29fa09852ec9f9802190938d7b386c732"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.48+678f3f6e6.tar.xz",
-        "version": "0.11.0-dev.48+678f3f6e6",
-        "sha256": "549fd14142e1a7bd05477309147a682c26d5c01c7a5e5707c0fc85547d638ea8"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "version": "0.11.0-dev.53+cbed6bb08",
+        "sha256": "ec423ca88278a68c0c25c9f3fb8bc66beeccd54e95c9dde23be1803f3a67e7da"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.48+678f3f6e6.tar.xz",
-        "version": "0.11.0-dev.48+678f3f6e6",
-        "sha256": "983bf92cfd7b60705e5fa62a93207c2153af48aee6a95e504002efdfe9a149db"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "version": "0.11.0-dev.53+cbed6bb08",
+        "sha256": "34d6c70a2e4fb76b9c1207cd16e620df3ea5488aee4b4e920587b362281a785c"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.48+678f3f6e6.tar.xz",
-        "version": "0.11.0-dev.48+678f3f6e6",
-        "sha256": "39b22558de421fea9633ea881f1921397402dae4dbf08f7b75d71e86203a0924"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "version": "0.11.0-dev.53+cbed6bb08",
+        "sha256": "0ac3f29efdda61097b4d7f9820a9cd5b194a498dedefadb899a20c7b51474676"
       },
       "x86_64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.48+678f3f6e6.zip",
-        "sha256": "8da9796bc832bc1466ec9d2e99177cdd9c003e182d90dd9932c284fbdca23daf",
-        "version": "0.11.0-dev.48+678f3f6e6"
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.53+cbed6bb08.zip",
+        "sha256": "7edd3e63b7bf4a7863bc9b3cd6f152fda65a5614824f35bf5dc77de8db534edc",
+        "version": "0.11.0-dev.53+cbed6bb08"
       }
     },
     "2021-02-20": {
@@ -8844,6 +8844,33 @@
         "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.48+678f3f6e6.tar.xz",
         "sha256": "549fd14142e1a7bd05477309147a682c26d5c01c7a5e5707c0fc85547d638ea8",
         "version": "0.11.0-dev.48+678f3f6e6"
+      }
+    },
+    "2022-11-04": {
+      "x86_64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "sha256": "34d6c70a2e4fb76b9c1207cd16e620df3ea5488aee4b4e920587b362281a785c",
+        "version": "0.11.0-dev.53+cbed6bb08"
+      },
+      "aarch64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "sha256": "0ac3f29efdda61097b4d7f9820a9cd5b194a498dedefadb899a20c7b51474676",
+        "version": "0.11.0-dev.53+cbed6bb08"
+      },
+      "x86_64-windows": {
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.53+cbed6bb08.zip",
+        "sha256": "7edd3e63b7bf4a7863bc9b3cd6f152fda65a5614824f35bf5dc77de8db534edc",
+        "version": "0.11.0-dev.53+cbed6bb08"
+      },
+      "x86_64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "sha256": "ab9fa208957eee827d3ad549d28cdac29fa09852ec9f9802190938d7b386c732",
+        "version": "0.11.0-dev.53+cbed6bb08"
+      },
+      "aarch64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.53+cbed6bb08.tar.xz",
+        "sha256": "ec423ca88278a68c0c25c9f3fb8bc66beeccd54e95c9dde23be1803f3a67e7da",
+        "version": "0.11.0-dev.53+cbed6bb08"
       }
     }
   },
