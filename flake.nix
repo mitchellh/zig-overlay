@@ -47,5 +47,10 @@
         path = ./templates/compiler-dev;
         description = "A development environment for Zig compiler development.";
       };
+
+      templates.init = {
+        path = ./templates/init;
+        description = "A basic, empty development environment.";
+      };
     };
 }
