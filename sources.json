@@ -36,29 +36,29 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.251+7c527c6df.tar.xz",
-        "version": "0.11.0-dev.251+7c527c6df",
-        "sha256": "8dbf9a2647b27474a13ea7794c11d4bc917e6290066f943158c1387c352bda9f"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "version": "0.11.0-dev.324+f61c5f3f5",
+        "sha256": "b8c2876d7012234b99dc0d772a39ef3223d65a20acd0d061c4be692375220af0"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.86+b83e4d965.tar.xz",
-        "version": "0.11.0-dev.86+b83e4d965",
-        "sha256": "affcd4a0de5a101946ef3df5d78d55121fdb6d25baee3c4a97f289b1cb975494"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "version": "0.11.0-dev.324+f61c5f3f5",
+        "sha256": "9d85f451e06eb246ba6ac11c20ea988f38de078e31c922b7919c599d097dcc17"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.251+7c527c6df.tar.xz",
-        "version": "0.11.0-dev.251+7c527c6df",
-        "sha256": "7145a67d70b9dabb054f24251410fdf58f99219183d5f73ae25a6d582cc219ff"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "version": "0.11.0-dev.324+f61c5f3f5",
+        "sha256": "90360f529b8e103ac3538de9a27835bfb37a9f6b4b1e5581bcb23ec2c4cac2e6"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.251+7c527c6df.tar.xz",
-        "version": "0.11.0-dev.251+7c527c6df",
-        "sha256": "f72784724949401592438f8c8da76d5ec0afc2ad0ae2e4f78261ea356503c765"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "version": "0.11.0-dev.324+f61c5f3f5",
+        "sha256": "50a7bf17e36f677d994f18f021fb8cdcd17faceb8504994a1083888601059606"
       },
       "x86_64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.251+7c527c6df.zip",
-        "sha256": "9de35f7fa8dcb903bd8de8cdd0925f1bec7710fce7a534933bb76e7741731e07",
-        "version": "0.11.0-dev.251+7c527c6df"
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.324+f61c5f3f5.zip",
+        "sha256": "87669cc8bda2c6eef0f3c298ddd545d495e1d3554b787bd7ccbca144c5ef729a",
+        "version": "0.11.0-dev.324+f61c5f3f5"
       }
     },
     "2021-02-20": {
@@ -9211,6 +9211,33 @@
         "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.251+7c527c6df.tar.xz",
         "sha256": "8dbf9a2647b27474a13ea7794c11d4bc917e6290066f943158c1387c352bda9f",
         "version": "0.11.0-dev.251+7c527c6df"
+      }
+    },
+    "2022-11-28": {
+      "x86_64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "sha256": "90360f529b8e103ac3538de9a27835bfb37a9f6b4b1e5581bcb23ec2c4cac2e6",
+        "version": "0.11.0-dev.324+f61c5f3f5"
+      },
+      "aarch64-darwin": {
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "sha256": "50a7bf17e36f677d994f18f021fb8cdcd17faceb8504994a1083888601059606",
+        "version": "0.11.0-dev.324+f61c5f3f5"
+      },
+      "x86_64-windows": {
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.11.0-dev.324+f61c5f3f5.zip",
+        "sha256": "87669cc8bda2c6eef0f3c298ddd545d495e1d3554b787bd7ccbca144c5ef729a",
+        "version": "0.11.0-dev.324+f61c5f3f5"
+      },
+      "x86_64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "sha256": "b8c2876d7012234b99dc0d772a39ef3223d65a20acd0d061c4be692375220af0",
+        "version": "0.11.0-dev.324+f61c5f3f5"
+      },
+      "aarch64-linux": {
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.11.0-dev.324+f61c5f3f5.tar.xz",
+        "sha256": "9d85f451e06eb246ba6ac11c20ea988f38de078e31c922b7919c599d097dcc17",
+        "version": "0.11.0-dev.324+f61c5f3f5"
       }
     }
   },
