@@ -1,10 +1,6 @@
-let
-  name = "zig-overlay";
-  description = "An empty project that uses Zig.";
-in
 {
-  inherit name description;  
-  
+  description = "An empty project that uses Zig.";
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     flake-utils.url = "github:numtide/flake-utils";
@@ -38,7 +34,6 @@ in
         pkgs = import nixpkgs {inherit overlays system;};
       in rec {
         devShells.default = pkgs.mkShell {
-          inherit name description;
           nativeBuildInputs = with pkgs; [
             zigpkgs.master
           ];
