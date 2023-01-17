@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -p curl jq python3Full -i sh
+#! nix-shell -p curl jq minisign python3Full -i sh
 set -e
 
 # Build our new sources.json
