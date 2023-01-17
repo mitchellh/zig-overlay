@@ -6,16 +6,19 @@ set -e
 curl -s 'https://ziglang.org/download/index.json' | jq '
 ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
-def toentry(vsn; x):
+def toentry(vsn; x; clobber_sha):
   [(vsn as $version |
     .value |
     to_entries[] |
     select(.key as $key | any($targets[]; . == $key)) | {
-      (todarwin(.key)): {
+      (todarwin(.key)): ({
         "url": .value.tarball,
-        "sha256": .value.shasum,
         "version": $version,
-      }
+      } + (if (clobber_sha) then
+        { "sha256": .value.shasum }
+      else
+        {}
+      end))
     }
   )] | add | first(values, {});
 
@@ -23,10 +26,10 @@ reduce to_entries[] as $entry ({}; . * (
   $entry | {
     (.key): (
       if (.key != "master") then
-        toentry(.key; .value)
+        toentry(.key; .value; false)
       else {
-        "latest": toentry(.value.version; .value),
-        (.value.date): toentry(.value.version; .value),
+        "latest": toentry(.value.version; .value; true),
+        (.value.date): toentry(.value.version; .value; true),
       } end
     )
   }
