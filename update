@@ -1,21 +1,24 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -p curl jq -i sh
+#! nix-shell -p curl jq minisign python3Full -i sh
 set -e
 
 # Build our new sources.json
 curl -s 'https://ziglang.org/download/index.json' | jq '
 ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
-def toentry(vsn; x):
+def toentry(vsn; x; clobber_sha):
   [(vsn as $version |
     .value |
     to_entries[] |
     select(.key as $key | any($targets[]; . == $key)) | {
-      (todarwin(.key)): {
+      (todarwin(.key)): ({
         "url": .value.tarball,
-        "sha256": .value.shasum,
         "version": $version,
-      }
+      } + (if (clobber_sha) then
+        { "sha256": .value.shasum }
+      else
+        {}
+      end))
     }
   )] | add | first(values, {});
 
@@ -23,10 +26,10 @@ reduce to_entries[] as $entry ({}; . * (
   $entry | {
     (.key): (
       if (.key != "master") then
-        toentry(.key; .value)
+        toentry(.key; .value; false)
       else {
-        "latest": toentry(.value.version; .value),
-        (.value.date): toentry(.value.version; .value),
+        "latest": toentry(.value.version; .value; true),
+        (.value.date): toentry(.value.version; .value; true),
       } end
     )
   }
@@ -42,3 +45,6 @@ cp sources.json sources.old.json
 
 # Recursive merge
 jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
+
+# Verify new release signatures and compute the SHA-256 sum.
+python verify_and_hash.py
