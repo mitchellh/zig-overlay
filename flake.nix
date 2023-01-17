@@ -4,6 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    # Used for shell.nix
+    flake-compat = {
+      url = github:edolstra/flake-compat;
+      flake = false;
+    };
   };
 
   outputs = {
@@ -32,6 +38,16 @@
 
       # nix fmt
       formatter = pkgs.alejandra;
+
+      devShells.default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          curl
+          jq
+        ];
+      };
+
+      # For compatibility with older versions of the `nix` binary
+      devShell = self.devShells.${system}.default;
     });
   in
     outputs
