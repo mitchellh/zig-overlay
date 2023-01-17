@@ -43,6 +43,7 @@
         nativeBuildInputs = with pkgs; [
           curl
           jq
+          python3Full
         ];
       };
 

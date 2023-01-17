@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -p curl jq -i sh
+#! nix-shell -p curl jq python3Full -i sh
 set -e
 
 # Build our new sources.json
@@ -42,3 +42,6 @@ cp sources.json sources.old.json
 
 # Recursive merge
 jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
+
+# Verify new release signatures and compute the SHA-256 sum.
+python verify_and_hash.py
