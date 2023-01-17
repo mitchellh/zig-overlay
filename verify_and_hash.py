@@ -39,6 +39,7 @@ def fix_release(release):
             # 403 is semantically 404 for Zig
             if e.code == 403:
                 platform["broken"] = True
+                platform["sha256"] = "BROKEN. THIS IS PURPOSELY INVALID."
             else:
                 print(f'  failed download: {e}')
         finally:
