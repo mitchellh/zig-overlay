@@ -33,7 +33,7 @@
     lib.attrsets.mapAttrs
     (k: v: mkBinaryInstall {inherit (v.${system}) version url sha256;})
     (lib.attrsets.filterAttrs
-      (k: v: (builtins.hasAttr system v) && (v.${system}.url != null))
+      (k: v: (builtins.hasAttr system v) && (v.${system}.url != null) && (v.${system}.sha256 != null))
       (builtins.removeAttrs sources ["master"]));
 
   # The master packages
