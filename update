@@ -6,6 +6,7 @@ set -e
 PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
 
 # Grab the JSON and parse the version
+rm -rf index.json index.json.minisig
 curl -s 'https://ziglang.org/download/index.json' > index.json
 VERSION=$(cat index.json | jq -r '.master.version')
 echo "Parsing master version: ${VERSION}"
