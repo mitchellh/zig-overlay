@@ -1,9 +1,21 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -p curl jq -i sh
+#! nix-shell -p curl jq minisign -i sh
 set -e
 
+# The well known public key for Zig
+PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
+
+# Grab the JSON and parse the version
+curl -s 'https://ziglang.org/download/index.json' > index.json
+VERSION=$(cat index.json | jq -r '.master.version')
+echo "Parsing master version: ${VERSION}"
+
+# Verify the signature of the JSON before we parse it
+curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > index.json.minisig
+minisign -V -P ${PUBLIC_KEY} -x index.json.minisig -m index.json
+
 # Build our new sources.json
-curl -s 'https://ziglang.org/download/index.json' | jq '
+cat index.json | jq '
 ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
 def toentry(vsn; x):
