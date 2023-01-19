@@ -44,7 +44,6 @@
           curl
           jq
           minisign
-          python3Full
         ];
       };
 
