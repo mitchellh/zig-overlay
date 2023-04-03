@@ -13,9 +13,9 @@ The flake outputs are documented in `flake.nix` but an overview:
   * `packages.<version>` for a tagged release
   * `packages.master` for the latest nightly release
   * `packages.master-<date>` for a nightly release
-  * `overlay` is an overlay that adds `zigpkgs` to be the packages
+  * `overlays.default` is an overlay that adds `zigpkgs` to be the packages
     exposed by this flake
-  * `template.compiler-dev` to setup a development environment for Zig
+  * `templates.compiler-dev` to setup a development environment for Zig
     compiler development.
 
 ## Usage
