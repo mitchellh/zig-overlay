@@ -33,7 +33,7 @@
               wasmtime
               zlib
             ]
-            ++ (with llvmPackages_14; [
+            ++ (with llvmPackages_16; [
               clang
               clang-unwrapped
               lld
