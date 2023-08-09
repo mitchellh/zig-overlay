@@ -1,6 +1,6 @@
 # Nix Flake for Zig
 
-This repository is a Nix flake packaging the [Zig](https://ziglang.com)
+This repository is a Nix flake packaging the [Zig](https://ziglang.org)
 compiler. The flake mirrors the binaries built officially by Zig and
 does not build them from source.
 
