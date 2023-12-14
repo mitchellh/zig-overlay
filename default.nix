@@ -11,7 +11,7 @@
     version,
     sha256,
   }:
-    pkgs.stdenv.mkDerivation {
+    pkgs.stdenv.mkDerivation (finalAttrs: {
       inherit version;
 
       pname = "zig";
@@ -26,7 +26,17 @@
         cp -r lib/* $out/lib
         cp zig $out/bin/zig
       '';
-    };
+
+      passthru.hook = pkgs.zig.hook.override {zig = finalAttrs.finalPackage;};
+
+      meta = with pkgs.lib; {
+        description = "General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software";
+        homepage = "https://ziglang.org/";
+        license = lib.licenses.mit;
+        maintainers = [];
+        platforms = lib.platforms.unix;
+      };
+    });
 
   # The packages that are tagged releases
   taggedPackages =
