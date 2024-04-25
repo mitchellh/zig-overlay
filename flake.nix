@@ -59,7 +59,7 @@
         zigpkgs = outputs.packages.${prev.system};
       };
 
-      # Templates for use with zig flake init
+      # Templates for use with nix flake init
       templates.compiler-dev = {
         path = ./templates/compiler-dev;
         description = "A development environment for Zig compiler development.";
