@@ -46,7 +46,8 @@ $ nix shell 'github:mitchellh/zig-overlay#master'
 ### Adding zig as a package
 
 To access zig as a package:
-  In your `flake.nix` file:
+
+In your `flake.nix` file:
   
 ```nix
 {
