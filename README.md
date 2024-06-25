@@ -33,7 +33,6 @@ In your `flake.nix` file:
   };
 }
 ```
-
 In a shell:
 
 ```sh
@@ -44,7 +43,35 @@ $ nix shell 'github:mitchellh/zig-overlay#master-2021-02-13'
 # open a shell with latest nightly version
 $ nix shell 'github:mitchellh/zig-overlay#master'
 ```
+### Adding zig as a package
 
+To access zig as a package:
+  In your `flake.nix` file:
+  
+```nix
+{
+  inputs.zig.url = "github:mitchellh/zig-overlay";
+
+  outputs = { self, zig, ... }: {
+    ...
+    modules = [
+      {nixpkgs.overlays = [zig.overlays.default];}
+      ...
+      ...
+    ];
+  };
+}
+```
+In your `configuration.nix` file :
+
+```nix
+    {pkgs,inputs, ...}: {
+    ...
+    environment.systemPackages = [
+      pkgs.zigpkgs.master # or <version>/master-<date>/
+    ]
+}
+```
 ### Compiler Development
 
 This flake outputs a template that makes it easy to work on the Zig
