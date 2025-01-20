@@ -24,6 +24,8 @@
         [ -d docs ] && cp -r docs/* $out/doc
         [ -d doc ] && cp -r doc/* $out/doc
         cp -r lib/* $out/lib
+        substituteInPlace $out/lib/std/zig/system.zig \
+          --replace "/usr/bin/env" "${pkgs.lib.getExe' pkgs.coreutils "env"}"
         cp zig $out/bin/zig
       '';
     };
