@@ -26,6 +26,8 @@
         cp -r lib/* $out/lib
         cp zig $out/bin/zig
       '';
+
+      meta.mainProgram = "zig";
     };
 
   # The packages that are tagged releases
