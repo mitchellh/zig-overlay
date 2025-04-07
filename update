@@ -6,7 +6,7 @@ set -e
 PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
 
 # Grab the JSON and parse the version
-rm -rf index.json index.json.minisig
+rm -rf *index.json zig-index.json.minisig
 curl -s 'https://ziglang.org/download/index.json' > zig-index.json
 VERSION=$(cat zig-index.json | jq -r '.master.version')
 echo "Parsing master version: ${VERSION}"
@@ -15,6 +15,7 @@ echo "Parsing master version: ${VERSION}"
 curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > zig-index.json.minisig
 minisign -V -P ${PUBLIC_KEY} -x zig-index.json.minisig -m zig-index.json
 
+# Merge Mach's index.json with the official one
 curl -s 'https://machengine.org/zig/index.json' > mach-index.json
 jq -s '.[0] * .[1]' mach-index.json zig-index.json > index.json
 
