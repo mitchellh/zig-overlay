@@ -33,8 +33,12 @@
     lib.attrsets.mapAttrs
     (k: v: mkBinaryInstall {inherit (v.${system}) version url sha256;})
     (lib.attrsets.filterAttrs
-      (k: v: (builtins.hasAttr system v) && (v.${system}.url != null) && (v.${system}.sha256 != null))
-      (builtins.removeAttrs sources ["master"]));
+      (k: v:
+        (builtins.hasAttr system v)
+        && (v.${system}.url != null)
+        && (v.${system}.sha256 != null)
+        && !(lib.strings.hasSuffix "mach" k))
+      (builtins.removeAttrs sources ["master" "mach-latest"]));
 
   # The master packages
   masterPackages =
@@ -52,13 +56,34 @@
       (k: v: (builtins.hasAttr system v) && (v.${system}.url != null))
       sources.master);
 
+  # Mach nominated versions
+  # https://machengine.org/docs/nominated-zig/
+  machPackages =
+    lib.attrsets.mapAttrs
+    (k: v: mkBinaryInstall {inherit (v.${system}) version url sha256;})
+    (lib.attrsets.filterAttrs (k: v: lib.strings.hasSuffix "mach" k)
+      (builtins.removeAttrs sources ["master"]));
+
   # This determines the latest /released/ version.
   latest = lib.lists.last (
     builtins.sort
     (x: y: (builtins.compareVersions x y) < 0)
     (builtins.attrNames taggedPackages)
   );
+
+  # Latest Mach nominated version
+  machLatest = lib.lists.last (
+    builtins.sort
+    (x: y: (builtins.compareVersions x y) < 0)
+    (builtins.attrNames machPackages)
+  );
 in
   # We want the packages but also add a "default" that just points to the
   # latest released version.
-  taggedPackages // masterPackages // {"default" = taggedPackages.${latest};}
+  taggedPackages
+  // masterPackages
+  // machPackages
+  // {
+    "default" = taggedPackages.${latest};
+    mach-latest = machPackages.${machLatest};
+  }
