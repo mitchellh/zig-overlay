@@ -24152,6 +24152,36 @@
         "sha256": "da86aec0b5d249a701f259a5f5cb76e7497454656d07f7a3790810b42bac829e",
         "version": "0.15.0-dev.208+8acedfd5b"
       }
+    },
+    "x86_64-darwin": {
+      "url": "https://ziglang.org/builds/zig-macos-x86_64-0.15.0-dev.208+8acedfd5b.tar.xz",
+      "sha256": "8f79a0bf8ca06cdb9a66f7b4ad252d7bd5e35e6a48b687ea321df847a4e4e422",
+      "version": "master"
+    },
+    "aarch64-darwin": {
+      "url": "https://ziglang.org/builds/zig-macos-aarch64-0.15.0-dev.208+8acedfd5b.tar.xz",
+      "sha256": "d46f997363bc6437c0d389f7f05f922072adc50f45b9ce67a0015d54695499a4",
+      "version": "master"
+    },
+    "x86_64-linux": {
+      "url": "https://ziglang.org/builds/zig-linux-x86_64-0.15.0-dev.208+8acedfd5b.tar.xz",
+      "sha256": "af7903e257e31693052aeca20b8fefcc3cf22ca2a39b6f2cacf7f19262896db6",
+      "version": "master"
+    },
+    "aarch64-linux": {
+      "url": "https://ziglang.org/builds/zig-linux-aarch64-0.15.0-dev.208+8acedfd5b.tar.xz",
+      "sha256": "8ed628d03398ea0d20e8a96896de929cfb66f00c0b273c04b2fc4158c08a23ef",
+      "version": "master"
+    },
+    "x86_64-windows": {
+      "url": "https://ziglang.org/builds/zig-windows-x86_64-0.15.0-dev.208+8acedfd5b.zip",
+      "sha256": "2f8dbbd52331ba12b80b9688d0fc616c02c47c169d3bef5044fad07ebb9811ae",
+      "version": "master"
+    },
+    "aarch64-windows": {
+      "url": "https://ziglang.org/builds/zig-windows-aarch64-0.15.0-dev.208+8acedfd5b.zip",
+      "sha256": "da86aec0b5d249a701f259a5f5cb76e7497454656d07f7a3790810b42bac829e",
+      "version": "master"
     }
   },
   "0.7.1": {
@@ -24710,6 +24740,326 @@
       "url": "https://ziglang.org/download/0.14.0/zig-windows-aarch64-0.14.0.zip",
       "sha256": "03e984383ebb8f85293557cfa9f48ee8698e7c400239570c9ff1aef3bffaf046",
       "version": "0.14.0"
+    }
+  },
+  "mach-latest": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "19e0b3673fd16609f7ce504faadb1c988270c2ed7cb250a7a9cb74beb22a4c23",
+      "version": "mach-latest"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "034d395256d9f8b9f4e9fb07bc3428336b5138853dc2d518898fa0fa8fab434f",
+      "version": "mach-latest"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "7be6abdebfa970c6138d165b348d0464e84f16f531e71cb20c0e052fae1d8c8d",
+      "version": "mach-latest"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "cafbc9b83e624d8e7e55c41991c2c8d33b52d25661d94c27f236fb622ce168e4",
+      "version": "mach-latest"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.14.0-dev.2577+271452d22.zip",
+      "sha256": "23f0c4a4f789b6e1a82861bc14ea80652ba1d75784fcca55e74d50be24cf60e9",
+      "version": "mach-latest"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.14.0-dev.2577+271452d22.zip",
+      "sha256": "3563af9bf14a8e510c02c7858320db712348557b71a7d9844d8a960363207518",
+      "version": "mach-latest"
+    },
+    "latest": {
+      "x86_64-darwin": {
+        "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "19e0b3673fd16609f7ce504faadb1c988270c2ed7cb250a7a9cb74beb22a4c23",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "aarch64-darwin": {
+        "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "034d395256d9f8b9f4e9fb07bc3428336b5138853dc2d518898fa0fa8fab434f",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "x86_64-linux": {
+        "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "7be6abdebfa970c6138d165b348d0464e84f16f531e71cb20c0e052fae1d8c8d",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "aarch64-linux": {
+        "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "cafbc9b83e624d8e7e55c41991c2c8d33b52d25661d94c27f236fb622ce168e4",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "x86_64-windows": {
+        "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.14.0-dev.2577+271452d22.zip",
+        "sha256": "23f0c4a4f789b6e1a82861bc14ea80652ba1d75784fcca55e74d50be24cf60e9",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "aarch64-windows": {
+        "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.14.0-dev.2577+271452d22.zip",
+        "sha256": "3563af9bf14a8e510c02c7858320db712348557b71a7d9844d8a960363207518",
+        "version": "0.14.0-dev.2577+271452d22"
+      }
+    },
+    "2024-12-30": {
+      "x86_64-darwin": {
+        "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "19e0b3673fd16609f7ce504faadb1c988270c2ed7cb250a7a9cb74beb22a4c23",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "aarch64-darwin": {
+        "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "034d395256d9f8b9f4e9fb07bc3428336b5138853dc2d518898fa0fa8fab434f",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "x86_64-linux": {
+        "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "7be6abdebfa970c6138d165b348d0464e84f16f531e71cb20c0e052fae1d8c8d",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "aarch64-linux": {
+        "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+        "sha256": "cafbc9b83e624d8e7e55c41991c2c8d33b52d25661d94c27f236fb622ce168e4",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "x86_64-windows": {
+        "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.14.0-dev.2577+271452d22.zip",
+        "sha256": "23f0c4a4f789b6e1a82861bc14ea80652ba1d75784fcca55e74d50be24cf60e9",
+        "version": "0.14.0-dev.2577+271452d22"
+      },
+      "aarch64-windows": {
+        "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.14.0-dev.2577+271452d22.zip",
+        "sha256": "3563af9bf14a8e510c02c7858320db712348557b71a7d9844d8a960363207518",
+        "version": "0.14.0-dev.2577+271452d22"
+      }
+    }
+  },
+  "2024.11.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "19e0b3673fd16609f7ce504faadb1c988270c2ed7cb250a7a9cb74beb22a4c23",
+      "version": "2024.11.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "034d395256d9f8b9f4e9fb07bc3428336b5138853dc2d518898fa0fa8fab434f",
+      "version": "2024.11.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "7be6abdebfa970c6138d165b348d0464e84f16f531e71cb20c0e052fae1d8c8d",
+      "version": "2024.11.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.14.0-dev.2577+271452d22.tar.xz",
+      "sha256": "cafbc9b83e624d8e7e55c41991c2c8d33b52d25661d94c27f236fb622ce168e4",
+      "version": "2024.11.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.14.0-dev.2577+271452d22.zip",
+      "sha256": "23f0c4a4f789b6e1a82861bc14ea80652ba1d75784fcca55e74d50be24cf60e9",
+      "version": "2024.11.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.14.0-dev.2577+271452d22.zip",
+      "sha256": "3563af9bf14a8e510c02c7858320db712348557b71a7d9844d8a960363207518",
+      "version": "2024.11.0-mach"
+    }
+  },
+  "2024.10.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.14.0-dev.1911+3bf89f55c.tar.xz",
+      "sha256": "07dab7e71d61465bebed305d2c8bfae53c5f3b9422dd8e481f1b04bf3812c54b",
+      "version": "2024.10.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.14.0-dev.1911+3bf89f55c.tar.xz",
+      "sha256": "fde79992e2f60d8a9155cf0d177c7c84db2a5729f716419660fc75f5d1ed2a95",
+      "version": "2024.10.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.1911+3bf89f55c.tar.xz",
+      "sha256": "73347307b8fcc4d5aab92b7c39f41740ae7b8ee2a82912aecb8cbbf7b6f899fd",
+      "version": "2024.10.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.14.0-dev.1911+3bf89f55c.tar.xz",
+      "sha256": "d37e7c596b0bb86e3160eb0f25c8951d7f31ed78dd3f127c701fa9ff95b49298",
+      "version": "2024.10.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.14.0-dev.1911+3bf89f55c.zip",
+      "sha256": "10141d62ecdc41784cf24912dbcdc4fbafd8cac7b3818c7fe3ea4d1ab9bccfc5",
+      "version": "2024.10.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.14.0-dev.1911+3bf89f55c.zip",
+      "sha256": "9a600ae56d40782f174204f4715bf6f3eadf536146dc794bbbd9a662b2dae70b",
+      "version": "2024.10.0-mach"
+    }
+  },
+  "0.4.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "7de18dfc05fc989629311727470f22af9e9e75cb52997c333938eef666e4396e",
+      "version": "0.4.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "fef4c33cc8b2c9af1caf47df98786c6bc049dd70ec6c05c794a3273b2937801b",
+      "version": "0.4.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "351bcaa1b43db30dc24fb7f34dc598fd7ee4d571f164a4e9bc6dac6f6e6e3c56",
+      "version": "0.4.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "20b9602db87482a1b03ca61acaac6acc17e6e3dc2e46d3521430a6aac3e8c4ef",
+      "version": "0.4.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.13.0-dev.351+64ef45eb0.zip",
+      "sha256": "7be394a9fa1e131ecd948cd0137a72fcde18afdca7c4420333057974dfee5b7d",
+      "version": "0.4.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.13.0-dev.351+64ef45eb0.zip",
+      "sha256": "d2b2d5a61258222467e0de8615675e2e66e184dc36c142adcf628246c97636a4",
+      "version": "0.4.0-mach"
+    }
+  },
+  "2024.5.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "7de18dfc05fc989629311727470f22af9e9e75cb52997c333938eef666e4396e",
+      "version": "2024.5.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "fef4c33cc8b2c9af1caf47df98786c6bc049dd70ec6c05c794a3273b2937801b",
+      "version": "2024.5.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "351bcaa1b43db30dc24fb7f34dc598fd7ee4d571f164a4e9bc6dac6f6e6e3c56",
+      "version": "2024.5.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.13.0-dev.351+64ef45eb0.tar.xz",
+      "sha256": "20b9602db87482a1b03ca61acaac6acc17e6e3dc2e46d3521430a6aac3e8c4ef",
+      "version": "2024.5.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.13.0-dev.351+64ef45eb0.zip",
+      "sha256": "7be394a9fa1e131ecd948cd0137a72fcde18afdca7c4420333057974dfee5b7d",
+      "version": "2024.5.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.13.0-dev.351+64ef45eb0.zip",
+      "sha256": "d2b2d5a61258222467e0de8615675e2e66e184dc36c142adcf628246c97636a4",
+      "version": "2024.5.0-mach"
+    }
+  },
+  "2024.3.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.12.0-dev.3180+83e578a18.tar.xz",
+      "sha256": "3d2fe9d76e0bc72430d142cde671fc4f99919aad451d3582121b2746abb5791f",
+      "version": "2024.3.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.12.0-dev.3180+83e578a18.tar.xz",
+      "sha256": "c3d455129203fc5ebab77bf9ab4580f15a60f7d5a4a856ef9a1dc80aae856c02",
+      "version": "2024.3.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.12.0-dev.3180+83e578a18.tar.xz",
+      "sha256": "66dd365aee3569e71940eb6fb2d47466f04b5ecb430aee74b9624b42ce17d6f6",
+      "version": "2024.3.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.12.0-dev.3180+83e578a18.tar.xz",
+      "sha256": "6b4f85c6f5bdc0a9e05ef7d1f49d437c36d8a63d30dba152c83740c0547e38e4",
+      "version": "2024.3.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.12.0-dev.3180+83e578a18.zip",
+      "sha256": "471acf6a4ea582720664159b0a2df8b32f1029d6681f80b7354cbb3c3d84b1e8",
+      "version": "2024.3.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.12.0-dev.3180+83e578a18.zip",
+      "sha256": "e48fd79741afff7567394ca53a90d75c8a4b6d36c7c76e701ec172a303db4b5e",
+      "version": "2024.3.0-mach"
+    }
+  },
+  "0.3.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "1d40ebfec0e72db3fa666e9a997841fd96a704e3b1fc84391dfd7366bf443899",
+      "version": "0.3.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "46d0fe89a0357b9f54ea5b15526db04926a9209b871b6d0abd4c7da1cc65acee",
+      "version": "0.3.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "4c450d5817da7914b27be2147f9740ebdf186cc933ae87ddb2a8eaa130d02d57",
+      "version": "0.3.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "98957f7dce0331cd8e605a703ee29432ef2f8a5117da5e4ed3b1a80923c46fe3",
+      "version": "0.3.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.12.0-dev.2063+804cee3b9.zip",
+      "sha256": "8dc5ecd7a0871d1d024e50fffdb51f0aef96c7023d9a935c598610a51f3c725c",
+      "version": "0.3.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.12.0-dev.2063+804cee3b9.zip",
+      "sha256": "299d5455cbb4a2370a6675a79f32b01956ffbdda8d70bb78e8a1671940ecd971",
+      "version": "0.3.0-mach"
+    }
+  },
+  "2024.1.0-mach": {
+    "x86_64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-x86_64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "1d40ebfec0e72db3fa666e9a997841fd96a704e3b1fc84391dfd7366bf443899",
+      "version": "2024.1.0-mach"
+    },
+    "aarch64-darwin": {
+      "url": "https://pkg.machengine.org/zig/zig-macos-aarch64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "46d0fe89a0357b9f54ea5b15526db04926a9209b871b6d0abd4c7da1cc65acee",
+      "version": "2024.1.0-mach"
+    },
+    "x86_64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-x86_64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "4c450d5817da7914b27be2147f9740ebdf186cc933ae87ddb2a8eaa130d02d57",
+      "version": "2024.1.0-mach"
+    },
+    "aarch64-linux": {
+      "url": "https://pkg.machengine.org/zig/zig-linux-aarch64-0.12.0-dev.2063+804cee3b9.tar.xz",
+      "sha256": "98957f7dce0331cd8e605a703ee29432ef2f8a5117da5e4ed3b1a80923c46fe3",
+      "version": "2024.1.0-mach"
+    },
+    "x86_64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-x86_64-0.12.0-dev.2063+804cee3b9.zip",
+      "sha256": "8dc5ecd7a0871d1d024e50fffdb51f0aef96c7023d9a935c598610a51f3c725c",
+      "version": "2024.1.0-mach"
+    },
+    "aarch64-windows": {
+      "url": "https://pkg.machengine.org/zig/zig-windows-aarch64-0.12.0-dev.2063+804cee3b9.zip",
+      "sha256": "299d5455cbb4a2370a6675a79f32b01956ffbdda8d70bb78e8a1671940ecd971",
+      "version": "2024.1.0-mach"
     }
   }
 }

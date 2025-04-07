@@ -7,13 +7,16 @@ PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
 
 # Grab the JSON and parse the version
 rm -rf index.json index.json.minisig
-curl -s 'https://ziglang.org/download/index.json' > index.json
-VERSION=$(cat index.json | jq -r '.master.version')
+curl -s 'https://ziglang.org/download/index.json' > zig-index.json
+VERSION=$(cat zig-index.json | jq -r '.master.version')
 echo "Parsing master version: ${VERSION}"
 
 # Verify the signature of the JSON before we parse it
-curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > index.json.minisig
-minisign -V -P ${PUBLIC_KEY} -x index.json.minisig -m index.json
+curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > zig-index.json.minisig
+minisign -V -P ${PUBLIC_KEY} -x zig-index.json.minisig -m zig-index.json
+
+curl -s 'https://machengine.org/zig/index.json' > mach-index.json
+jq -s '.[0] * .[1]' mach-index.json zig-index.json > index.json
 
 # Build our new sources.json
 cat index.json | jq '
@@ -35,7 +38,7 @@ def toentry(vsn; x):
 reduce to_entries[] as $entry ({}; . * (
   $entry | {
     (.key): (
-      if (.key != "master") then
+      if (.key != "master" and .key != "mach-latest") then
         toentry(.key; .value)
       else {
         "latest": toentry(.value.version; .value),
