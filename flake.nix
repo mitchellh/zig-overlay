@@ -2,7 +2,7 @@
   description = "Zig compiler binaries.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
 
     # Used for shell.nix
@@ -59,7 +59,7 @@
         zigpkgs = outputs.packages.${prev.system};
       };
 
-      # Templates for use with zig flake init
+      # Templates for use with nix flake init
       templates.compiler-dev = {
         path = ./templates/compiler-dev;
         description = "A development environment for Zig compiler development.";
