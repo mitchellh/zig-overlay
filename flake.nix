@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    systems = {
+      url = "github:nix-systems/default";
+      flake = false;
+    };
     flake-utils.url = "github:numtide/flake-utils";
 
     # Used for shell.nix
@@ -15,11 +19,11 @@
   outputs = {
     self,
     nixpkgs,
+    systems,
     flake-utils,
     ...
   }: let
-    systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
-    outputs = flake-utils.lib.eachSystem systems (system: let
+    outputs = flake-utils.lib.eachSystem (import systems) (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in rec {
       # The packages exported by the Flake:
