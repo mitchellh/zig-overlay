@@ -36,34 +36,34 @@
     },
     "latest": {
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "version": "0.15.0-dev.582+f2077f57a",
-        "sha256": "39e89a28dc2219917ea9a71cd2e68feb0495a68f808d9615f61835db4cde3f05"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.15.0-dev.589+23c817548.tar.xz",
+        "version": "0.15.0-dev.589+23c817548",
+        "sha256": "143aac3340982f988ff09f1329fa399a1715d23dbb7f93bc65bcfd4d3ea401ea"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "version": "0.15.0-dev.582+f2077f57a",
-        "sha256": "cc9fdeb436de201650f3b9f6c544dae137a044d22f0cd514ede371238388fbe3"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.15.0-dev.589+23c817548.tar.xz",
+        "version": "0.15.0-dev.589+23c817548",
+        "sha256": "e4ebe4783df266bdf8d62d463ced87c8ffceb280d144cdd48e1ef267c6ac91cf"
       },
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "version": "0.15.0-dev.582+f2077f57a",
-        "sha256": "151c2e264c7454df9f105cde71c3ba9c04cad38bf508dc758e4293edc51b76a2"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.15.0-dev.589+23c817548.tar.xz",
+        "version": "0.15.0-dev.589+23c817548",
+        "sha256": "9c58f453ab9d9524e20d8139a447d2161cdca1b6d42d44b042ba7763f2bba6a3"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "version": "0.15.0-dev.582+f2077f57a",
-        "sha256": "66faece9333ce65252a9a65d8fc633c810ecf618c51a6d80c8ad221fb37d39d6"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.15.0-dev.589+23c817548.tar.xz",
+        "version": "0.15.0-dev.589+23c817548",
+        "sha256": "26092a40a531b305740fccadaf53a6220ba2d16ca79088f431e59e31ce8916ea"
       },
       "x86_64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.15.0-dev.582+f2077f57a.zip",
-        "sha256": "16a3bc851016f98f0699119eaccf90bf6358f8a718d29916cb6bbc59b2164db3",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.15.0-dev.589+23c817548.zip",
+        "sha256": "45e6527bcaac90f2cf74c35f76bbe69a86736713bef89921c25aa852b5bf8dfb",
+        "version": "0.15.0-dev.589+23c817548"
       },
       "aarch64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-aarch64-0.15.0-dev.582+f2077f57a.zip",
-        "sha256": "b1c96988e1894ee3cc672622d1c34414f9ae35eb50053be7927836f2ed61c09a",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-windows-aarch64-0.15.0-dev.589+23c817548.zip",
+        "sha256": "6a7fa8529a17049adba0b1a5f3646d07d64e90b065610137a0c1087ea0f81c88",
+        "version": "0.15.0-dev.589+23c817548"
       }
     },
     "2021-02-20": {
@@ -32475,34 +32475,34 @@
     },
     "2025-05-20": {
       "x86_64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "sha256": "151c2e264c7454df9f105cde71c3ba9c04cad38bf508dc758e4293edc51b76a2",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-macos-x86_64-0.15.0-dev.589+23c817548.tar.xz",
+        "sha256": "9c58f453ab9d9524e20d8139a447d2161cdca1b6d42d44b042ba7763f2bba6a3",
+        "version": "0.15.0-dev.589+23c817548"
       },
       "aarch64-darwin": {
-        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "sha256": "66faece9333ce65252a9a65d8fc633c810ecf618c51a6d80c8ad221fb37d39d6",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-macos-aarch64-0.15.0-dev.589+23c817548.tar.xz",
+        "sha256": "26092a40a531b305740fccadaf53a6220ba2d16ca79088f431e59e31ce8916ea",
+        "version": "0.15.0-dev.589+23c817548"
       },
       "x86_64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "sha256": "39e89a28dc2219917ea9a71cd2e68feb0495a68f808d9615f61835db4cde3f05",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-linux-x86_64-0.15.0-dev.589+23c817548.tar.xz",
+        "sha256": "143aac3340982f988ff09f1329fa399a1715d23dbb7f93bc65bcfd4d3ea401ea",
+        "version": "0.15.0-dev.589+23c817548"
       },
       "aarch64-linux": {
-        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.15.0-dev.582+f2077f57a.tar.xz",
-        "sha256": "cc9fdeb436de201650f3b9f6c544dae137a044d22f0cd514ede371238388fbe3",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-linux-aarch64-0.15.0-dev.589+23c817548.tar.xz",
+        "sha256": "e4ebe4783df266bdf8d62d463ced87c8ffceb280d144cdd48e1ef267c6ac91cf",
+        "version": "0.15.0-dev.589+23c817548"
       },
       "x86_64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.15.0-dev.582+f2077f57a.zip",
-        "sha256": "16a3bc851016f98f0699119eaccf90bf6358f8a718d29916cb6bbc59b2164db3",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-windows-x86_64-0.15.0-dev.589+23c817548.zip",
+        "sha256": "45e6527bcaac90f2cf74c35f76bbe69a86736713bef89921c25aa852b5bf8dfb",
+        "version": "0.15.0-dev.589+23c817548"
       },
       "aarch64-windows": {
-        "url": "https://ziglang.org/builds/zig-windows-aarch64-0.15.0-dev.582+f2077f57a.zip",
-        "sha256": "b1c96988e1894ee3cc672622d1c34414f9ae35eb50053be7927836f2ed61c09a",
-        "version": "0.15.0-dev.582+f2077f57a"
+        "url": "https://ziglang.org/builds/zig-windows-aarch64-0.15.0-dev.589+23c817548.zip",
+        "sha256": "6a7fa8529a17049adba0b1a5f3646d07d64e90b065610137a0c1087ea0f81c88",
+        "version": "0.15.0-dev.589+23c817548"
       }
     }
   },
