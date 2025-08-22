@@ -11,7 +11,7 @@
     version,
     sha256,
   }:
-    pkgs.stdenv.mkDerivation {
+    pkgs.stdenv.mkDerivation (finalAttrs: {
       inherit version;
 
       pname = "zig";
@@ -26,7 +26,26 @@
         cp -r lib/* $out/lib
         cp zig $out/bin/zig
       '';
-    };
+
+      passthru = import "${pkgs.path}/pkgs/development/compilers/zig/passthru.nix" {
+        inherit lib;
+        inherit (pkgs)
+          stdenv
+          callPackage
+          wrapCCWith
+          wrapBintoolsWith
+          overrideCC
+          targetPackages;
+        zig = finalAttrs.finalPackage;
+      };
+
+      meta = {
+        maintainers = with lib.maintainers; [ andrewrk ];
+        teams = [ lib.teams.zig ];
+        mainProgram = "zig";
+        platforms = lib.platforms.unix;
+      };
+    });
 
   # The packages that are tagged releases
   taggedPackages =
