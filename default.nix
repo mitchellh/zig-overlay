@@ -4,18 +4,30 @@
 }: let
   inherit (pkgs) lib;
   sources = builtins.fromJSON (lib.strings.fileContents ./sources.json);
+  mirrors = builtins.fromJSON (lib.strings.fileContents ./mirrors.json);
 
   # mkBinaryInstall makes a derivation that installs Zig from a binary.
   mkBinaryInstall = {
     url,
     version,
     sha256,
-  }:
+  }: let
+    tarballName = lib.lists.last (lib.strings.split "/" url);
+    srcIsFromZigLang = lib.strings.hasPrefix "https://ziglang.org/" url;
+    urlFromMirrors =
+      builtins.map
+      (u: u + tarballName + "?source=nix-zig-overlay")
+      mirrors;
+    urls =
+      if srcIsFromZigLang
+      then urlFromMirrors ++ [url]
+      else [url];
+  in
     pkgs.stdenv.mkDerivation {
       inherit version;
 
       pname = "zig";
-      src = pkgs.fetchurl {inherit url sha256;};
+      src = pkgs.fetchurl {inherit urls sha256;};
       dontConfigure = true;
       dontBuild = true;
       dontFixup = true;
