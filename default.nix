@@ -16,7 +16,7 @@
     srcIsFromZigLang = lib.strings.hasPrefix "https://ziglang.org/" url;
     urlFromMirrors =
       builtins.map
-      (u: u + tarballName + "?source=nix-zig-overlay")
+      (mirror: "${mirror}/${tarballName}?source=nix-zig-overlay")
       mirrors;
     urls =
       if srcIsFromZigLang
