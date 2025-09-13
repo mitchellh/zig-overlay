@@ -2,6 +2,8 @@
 #! nix-shell -p curl jq minisign -i sh
 set -e
 
+curl -s 'https://ziglang.org/download/community-mirrors.txt' | jq -R '.' | jq -s . > mirrors.json
+
 # The well known public key for Zig
 PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
 
