@@ -43,6 +43,8 @@ $ nix run 'github:mitchellh/zig-overlay'
 $ nix shell 'github:mitchellh/zig-overlay#master-2021-02-13'
 # open a shell with latest nightly version
 $ nix shell 'github:mitchellh/zig-overlay#master'
+# open a shell with a specific zig version
+$ nix shell 'github:mitchellh/zig-overlay#"0.14.0"'
 ```
 
 ### Compiler Development
