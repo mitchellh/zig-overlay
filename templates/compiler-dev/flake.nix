@@ -2,7 +2,7 @@
   description = "Zig compiler development.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     # Used for shell.nix
@@ -33,7 +33,7 @@
               wasmtime
               zlib
             ]
-            ++ (with llvmPackages_20; [
+            ++ (with llvmPackages_21; [
               clang
               clang-unwrapped
               lld
