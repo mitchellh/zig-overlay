@@ -31,7 +31,7 @@
 
       # "Apps" so that `nix run` works. If you run `nix run .` then
       # this will use the latest default.
-      apps = rec {
+      apps = {
         default = apps.zig;
         zig = flake-utils.lib.mkApp {drv = packages.default;};
       };
@@ -48,7 +48,7 @@
       };
 
       # For compatibility with older versions of the `nix` binary
-      devShell = self.devShells.${system}.default;
+      devShell = self.devShells.${pkgs.stdenv.hostPlatform.system}.default;
     });
   in
     outputs
@@ -56,7 +56,7 @@
       # Overlay that can be imported so you can access the packages
       # using zigpkgs.master or whatever you'd like.
       overlays.default = final: prev: {
-        zigpkgs = outputs.packages.${prev.system};
+        zigpkgs = outputs.packages.${prev.stdenv.hostPlatform.system};
       };
 
       # Templates for use with nix flake init
