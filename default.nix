@@ -1,5 +1,6 @@
 {
-  pkgs ? import <nixpkgs> {},
+  nixpkgs ? <nixpkgs>,
+  pkgs ? import nixpkgs {},
   system ? builtins.currentSystem,
 }: let
   inherit (pkgs) lib;
@@ -11,6 +12,7 @@
     url,
     version,
     sha256,
+    platforms,
   }: let
     tarballName = lib.lists.last (lib.strings.split "/" url);
     srcIsFromZigLang = lib.strings.hasPrefix "https://ziglang.org/" url;
@@ -23,7 +25,7 @@
       then urlFromMirrors ++ [url]
       else [url];
   in
-    pkgs.stdenv.mkDerivation {
+    pkgs.stdenv.mkDerivation (finalAttrs: {
       inherit version;
 
       pname = "zig";
@@ -41,13 +43,42 @@
         cp zig $out/bin/zig
       '';
 
-      meta.mainProgram = "zig";
-    };
+      passthru = let
+        mkPassthru = import "${nixpkgs}/pkgs/development/compilers/zig/passthru.nix";
+      in
+        mkPassthru ({
+            inherit
+              (pkgs)
+              stdenv
+              callPackage
+              wrapCCWith
+              wrapBintoolsWith
+              overrideCC
+              ;
+            zig = finalAttrs.finalPackage;
+          }
+          // lib.optionalAttrs ((builtins.functionArgs mkPassthru) ? lib) {
+            inherit lib;
+          }
+          // lib.optionalAttrs ((builtins.functionArgs mkPassthru) ? targetPackages) {
+            inherit (pkgs) targetPackages;
+          });
+
+      meta =
+        pkgs.zig.meta
+        // {
+          inherit platforms;
+        };
+    });
 
   # The packages that are tagged releases
   taggedPackages =
     lib.attrsets.mapAttrs
-    (k: v: mkBinaryInstall {inherit (v.${system}) version url sha256;})
+    (k: v:
+      mkBinaryInstall {
+        inherit (v.${system}) version url sha256;
+        platforms = builtins.attrNames v;
+      })
     (lib.attrsets.filterAttrs
       (k: v: (builtins.hasAttr system v) && (v.${system}.url != null) && (v.${system}.sha256 != null))
       (builtins.removeAttrs sources ["master"]));
@@ -62,7 +93,10 @@
           then "master"
           else ("master-" + k)
         )
-        (mkBinaryInstall {inherit (v.${system}) version url sha256;})
+        (mkBinaryInstall {
+          inherit (v.${system}) version url sha256;
+          platforms = builtins.attrNames v;
+        })
     )
     (lib.attrsets.filterAttrs
       (k: v: (builtins.hasAttr system v) && (v.${system}.url != null))

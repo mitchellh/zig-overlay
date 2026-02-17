@@ -32,7 +32,7 @@
     #  - <version> - tagged version
     #  - master - latest nightly (updated daily)
     #  - master-<date> - nightly by date
-    packages = lib.mapAttrs (system: pkgs: import ./default.nix {inherit system pkgs;}) pkgsFor;
+    packages = lib.mapAttrs (system: pkgs: import ./default.nix {inherit nixpkgs system pkgs;}) pkgsFor;
 
     # Overlay that can be imported so you can access the packages
     # using zigpkgs.master or whatever you'd like.
