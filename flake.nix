@@ -37,7 +37,7 @@
     # Overlay that can be imported so you can access the packages
     # using zigpkgs.master or whatever you'd like.
     overlays.default = final: prev: {
-      zigpkgs = self.packages.${prev.system};
+      zigpkgs = self.packages.${prev.stdenv.hostPlatform.system};
     };
 
     # "Apps" so that `nix run` works. If you run `nix run .` then
