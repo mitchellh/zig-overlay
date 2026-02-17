@@ -11,7 +11,6 @@
     url,
     version,
     sha256,
-    platforms,
   }: let
     tarballName = lib.lists.last (lib.strings.split "/" url);
     srcIsFromZigLang = lib.strings.hasPrefix "https://ziglang.org/" url;
@@ -24,7 +23,7 @@
       then urlFromMirrors ++ [url]
       else [url];
   in
-    pkgs.stdenv.mkDerivation (finalAttrs: {
+    pkgs.stdenv.mkDerivation {
       inherit version;
 
       pname = "zig";
@@ -42,35 +41,13 @@
         cp zig $out/bin/zig
       '';
 
-      passthru = import "${pkgs.path}/pkgs/development/compilers/zig/passthru.nix" {
-        inherit lib;
-        inherit
-          (pkgs)
-          stdenv
-          callPackage
-          wrapCCWith
-          wrapBintoolsWith
-          overrideCC
-          targetPackages
-          ;
-        zig = finalAttrs.finalPackage;
-      };
-
-      meta =
-        pkgs.zig.meta
-        // {
-          inherit platforms;
-        };
-    });
+      meta.mainProgram = "zig";
+    };
 
   # The packages that are tagged releases
   taggedPackages =
     lib.attrsets.mapAttrs
-    (k: v:
-      mkBinaryInstall {
-        inherit (v.${system}) version url sha256;
-        platforms = builtins.attrNames v;
-      })
+    (k: v: mkBinaryInstall {inherit (v.${system}) version url sha256;})
     (lib.attrsets.filterAttrs
       (k: v: (builtins.hasAttr system v) && (v.${system}.url != null) && (v.${system}.sha256 != null))
       (builtins.removeAttrs sources ["master"]));
@@ -85,10 +62,7 @@
           then "master"
           else ("master-" + k)
         )
-        (mkBinaryInstall {
-          inherit (v.${system}) version url sha256;
-          platforms = builtins.attrNames v;
-        })
+        (mkBinaryInstall {inherit (v.${system}) version url sha256;})
     )
     (lib.attrsets.filterAttrs
       (k: v: (builtins.hasAttr system v) && (v.${system}.url != null))
