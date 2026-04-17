@@ -13,12 +13,14 @@ curl -s 'https://ziglang.org/download/index.json' > index.json
 VERSION=$(cat index.json | jq -r '.master.version')
 echo "Parsing master version: ${VERSION}"
 
-# Verify the signature of the JSON before we parse it
+# Download the versioned index.json and its signature, then verify.
+# The signature is generated against the versioned file, not the generic one.
+curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json" > versioned-index.json
 curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > index.json.minisig
-minisign -V -P ${PUBLIC_KEY} -x index.json.minisig -m index.json
+minisign -V -P ${PUBLIC_KEY} -x index.json.minisig -m versioned-index.json
 
-# Build our new sources.json
-cat index.json | jq '
+# Build our new sources.json from the verified index
+cat versioned-index.json | jq '
 ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
 def toentry(vsn; x):
@@ -57,3 +59,6 @@ cp sources.json sources.old.json
 
 # Recursive merge
 jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
+
+# Clean up temp files
+rm -f index.json versioned-index.json index.json.minisig sources.old.json sources.new.json

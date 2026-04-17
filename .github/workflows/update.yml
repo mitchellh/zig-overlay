@@ -15,6 +15,6 @@ jobs:
       - run: "git config user.email mitchellh@users.noreply.github.com"
       - run: "git config user.name zig-overlay"
       - run: "git add -A"
-      - run: "git commit -m 'update sources.json' | true"
+      - run: "git commit -m 'update sources.json' || true"
       - run: "git push -u origin main"
 
