@@ -2,7 +2,7 @@
   description = "An empty project that uses Zig.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
     zig.url = "github:mitchellh/zig-overlay";
 
@@ -19,12 +19,7 @@
     flake-utils,
     ...
   } @ inputs: let
-    overlays = [
-      # Other overlays
-      (final: prev: {
-        zigpkgs = inputs.zig.packages.${prev.system};
-      })
-    ];
+    overlays = [inputs.zig.overlays.default];
 
     # Our supported systems are the same supported systems as the Zig binaries
     systems = builtins.attrNames inputs.zig.packages;

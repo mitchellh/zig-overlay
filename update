@@ -1,70 +1,119 @@
 #!/usr/bin/env nix-shell
-#! nix-shell -p curl jq minisign -i sh
-set -e
+#! nix-shell -p coreutils curl jq minisign -i sh
+set -eu
 
-curl -s 'https://ziglang.org/download/community-mirrors.txt' | jq -R '.' | jq -s . > mirrors.json
+tmpdir=$(mktemp -d)
+cleanup() {
+  rm -rf "$tmpdir"
+}
+trap cleanup EXIT INT TERM
+
+fetch() {
+  curl -fsSL --retry 3 --retry-delay 1 "$1"
+}
+
+fetch 'https://ziglang.org/download/community-mirrors.txt' | jq -R '.' | jq -s . > "$tmpdir/mirrors.json"
 
 # The well known public key for Zig
 PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
 
 # Grab the main index.json (contains all releases + master)
-rm -rf index.json index.json.minisig
-curl -s 'https://ziglang.org/download/index.json' > index.json
-VERSION=$(cat index.json | jq -r '.master.version')
+fetch 'https://ziglang.org/download/index.json' > "$tmpdir/index.json"
+VERSION=$(jq -r '.master.version' "$tmpdir/index.json")
 echo "Parsing master version: ${VERSION}"
 
 # Download the versioned index.json and its signature, then verify.
 # The signature is generated against the versioned file, not the generic one.
-curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json" > versioned-index.json
-curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > index.json.minisig
-minisign -V -P ${PUBLIC_KEY} -x index.json.minisig -m versioned-index.json
+fetch "https://ziglang.org/builds/zig-${VERSION}-index.json" > "$tmpdir/versioned-index.json"
+fetch "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > "$tmpdir/versioned-index.json.minisig"
+minisign -V -P "$PUBLIC_KEY" -x "$tmpdir/versioned-index.json.minisig" -m "$tmpdir/versioned-index.json"
 
 # The main index.json is not signed, but every individual tarball has a
 # .minisig signature. For release versions that only appear in the main
-# index (not in the verified versioned index), verify that a valid
-# signature exists for at least one tarball per version.
-NEW_VERSIONS=$(jq -rs '
+# index (not in the verified versioned index), verify every supported
+# tarball signature and compute sha256 from the verified artifact.
+NEW_VERSIONS_JSON="$tmpdir/new-versions.json"
+jq -rs '
   . as [$main, $verified] |
-  [$main | keys[] | select(. != "master") | select(. as $k | ($verified | has($k)) | not)] |
-  .[]
-' index.json versioned-index.json)
+  [
+    $main
+    | keys[]
+    | select(. != "master")
+    | select(. as $k | ($verified | has($k)) | not)
+  ]
+' "$tmpdir/index.json" "$tmpdir/versioned-index.json" > "$NEW_VERSIONS_JSON"
 
-FAILED=""
-for v in $NEW_VERSIONS; do
-  # Get all tarball URLs for this version (only for our supported targets)
-  TARBALL_URLS=$(jq -r --arg v "$v" '
+VERIFIED_RELEASES_JSON="$tmpdir/verified-releases.json"
+printf '{}\n' > "$VERIFIED_RELEASES_JSON"
+
+jq -r '.[]' "$NEW_VERSIONS_JSON" > "$tmpdir/new-versions.txt"
+while IFS= read -r version; do
+  [ -n "$version" ] || continue
+
+  version_targets="$tmpdir/${version}-targets.jsonl"
+  version_platforms="$tmpdir/${version}-platforms.jsonl"
+  : > "$version_platforms"
+
+  jq -c --arg version "$version" '
     ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
-    .[$v] | to_entries[] | select(.key as $k | any($targets[]; . == $k)) | .value.tarball
-  ' index.json)
+    .[$version]
+    | to_entries[]
+    | select(.key as $key | any($targets[]; . == $key))
+    | select(.value.tarball != null)
+    | {
+        target: .key,
+        tarball: .value.tarball,
+      }
+  ' "$tmpdir/index.json" > "$version_targets"
 
-  for TARBALL_URL in $TARBALL_URLS; do
-    TARBALL_FILE=$(basename "$TARBALL_URL")
-    echo "Verifying signature for ${v}: ${TARBALL_FILE}..."
+  if [ ! -s "$version_targets" ]; then
+    echo "Skipping ${version}: no supported targets found."
+    continue
+  fi
 
-    curl -s "$TARBALL_URL" > "verify-${TARBALL_FILE}"
-    curl -s "${TARBALL_URL}.minisig" > "verify-${TARBALL_FILE}.minisig"
-    if ! minisign -V -P ${PUBLIC_KEY} -x "verify-${TARBALL_FILE}.minisig" -m "verify-${TARBALL_FILE}"; then
-      echo "ERROR: signature verification failed for ${v} (${TARBALL_FILE})"
-      FAILED="${FAILED} ${v}"
+  version_failed=0
+  while IFS= read -r target_entry; do
+    [ -n "$target_entry" ] || continue
+
+    target=$(printf '%s\n' "$target_entry" | jq -r '.target')
+    tarball_url=$(printf '%s\n' "$target_entry" | jq -r '.tarball')
+    tarball_file="$tmpdir/$(basename "$tarball_url")"
+
+    echo "Verifying signature for ${version}: $(basename "$tarball_url")..."
+    fetch "$tarball_url" > "$tarball_file"
+    fetch "${tarball_url}.minisig" > "$tarball_file.minisig"
+
+    if ! minisign -V -P "$PUBLIC_KEY" -x "$tarball_file.minisig" -m "$tarball_file"; then
+      echo "ERROR: signature verification failed for ${version} (${target})" >&2
+      version_failed=1
+      break
     fi
-    rm -f "verify-${TARBALL_FILE}" "verify-${TARBALL_FILE}.minisig"
-  done
-done
 
-if [ -n "$FAILED" ]; then
-  echo "ERROR: Signature verification failed for:${FAILED}"
-  echo "Falling back to verified index only."
-  cp versioned-index.json merged-index.json
-else
-  # Start from the verified index and add only the newly verified releases
-  VERIFIED_VERSIONS=$(echo "$NEW_VERSIONS" | jq -R '.' | jq -s '.')
-  jq -s --argjson versions "$VERIFIED_VERSIONS" '
-    .[1] * (.[0] | to_entries | map(select(.key as $k | $versions | index($k))) | from_entries)
-  ' index.json versioned-index.json > merged-index.json
-fi
+    sha256=$(sha256sum "$tarball_file" | awk '{print $1}')
+    jq -n \
+      --arg target "$target" \
+      --arg tarball "$tarball_url" \
+      --arg sha256 "$sha256" \
+      --arg version "$version" \
+      '{($target): {tarball: $tarball, shasum: $sha256, version: $version}}' \
+      >> "$version_platforms"
+  done < "$version_targets"
 
-# Build our new sources.json from the merged index
-cat merged-index.json | jq '
+  if [ "$version_failed" -ne 0 ]; then
+    continue
+  fi
+
+  version_release="$tmpdir/${version}-release.json"
+  jq -s --arg version "$version" '{($version): (add // {})}' "$version_platforms" > "$version_release"
+  jq -s '.[0] * .[1]' "$VERIFIED_RELEASES_JSON" "$version_release" > "$tmpdir/verified-releases.next.json"
+  mv "$tmpdir/verified-releases.next.json" "$VERIFIED_RELEASES_JSON"
+done < "$tmpdir/new-versions.txt"
+
+jq -s '.[0] * .[1]' "$tmpdir/versioned-index.json" "$VERIFIED_RELEASES_JSON" > "$tmpdir/combined-index.json"
+
+# Build our new sources.json from the verified index plus any individually
+# verified release-only additions.
+jq '
 ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
 def toentry(vsn; x):
@@ -92,17 +141,15 @@ reduce to_entries[] as $entry ({}; . * (
     )
   }
 ))
-' > sources.new.json
+' "$tmpdir/combined-index.json" > "$tmpdir/sources.new.json"
 
-# For debugging
-# cat sources.new.json
-# exit
+# Preserve historical nightly entries while replacing current metadata.
+jq -s '
+  . as [$old, $new] |
+  $new + {
+    master: (($old.master // {}) + ($new.master // {}))
+  }
+' sources.json "$tmpdir/sources.new.json" > "$tmpdir/sources.json"
 
-# Copy the old file since jq can't modify in-place. This is also a backup.
-cp sources.json sources.old.json
-
-# Recursive merge
-jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
-
-# Clean up temp files
-rm -f index.json versioned-index.json merged-index.json index.json.minisig sources.old.json sources.new.json
+mv "$tmpdir/mirrors.json" mirrors.json
+mv "$tmpdir/sources.json" sources.json

@@ -3,6 +3,14 @@ on:
   schedule:
     - cron: '0 */12 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-sources
+  cancel-in-progress: true
+
 jobs:
   update-sources:
     runs-on: ubuntu-latest
@@ -12,9 +20,12 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: ./update
-      - run: "git config user.email mitchellh@users.noreply.github.com"
-      - run: "git config user.name zig-overlay"
-      - run: "git add -A"
-      - run: "git commit -m 'update sources.json' || true"
-      - run: "git push -u origin main"
-
+      - run: git config user.email mitchellh@users.noreply.github.com
+      - run: git config user.name zig-overlay
+      - run: |
+          git add mirrors.json sources.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'update Zig release metadata'
+          git push origin main
