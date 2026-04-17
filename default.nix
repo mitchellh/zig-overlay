@@ -12,7 +12,6 @@
     url,
     version,
     sha256,
-    platforms,
   }: let
     tarballName = lib.lists.last (lib.strings.split "/" url);
     srcIsFromZigLang = lib.strings.hasPrefix "https://ziglang.org/" url;
@@ -67,7 +66,8 @@
       meta =
         pkgs.zig.meta
         // {
-          inherit platforms;
+          mainProgram = "zig";
+          platforms = [system];
         };
     });
 
@@ -77,7 +77,6 @@
     (k: v:
       mkBinaryInstall {
         inherit (v.${system}) version url sha256;
-        platforms = builtins.attrNames v;
       })
     (lib.attrsets.filterAttrs
       (k: v: (builtins.hasAttr system v) && (v.${system}.url != null) && (v.${system}.sha256 != null))
@@ -95,11 +94,10 @@
         )
         (mkBinaryInstall {
           inherit (v.${system}) version url sha256;
-          platforms = builtins.attrNames v;
         })
     )
     (lib.attrsets.filterAttrs
-      (k: v: (builtins.hasAttr system v) && (v.${system}.url != null))
+      (k: v: (builtins.hasAttr system v) && (v.${system}.url != null) && (v.${system}.sha256 != null))
       sources.master);
 
   # This determines the latest /released/ version.

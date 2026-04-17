@@ -9,7 +9,30 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix flake check
+      - run: nix build --no-link .#default .#master
+      - run: nix run . -- version
+      - run: |
+          repo="$PWD"
+          tmpdir=$(mktemp -d)
+          trap 'rm -rf "$tmpdir"' EXIT
+          cd "$tmpdir"
+          nix flake init -t "$repo#init"
+          nix flake show
+      - run: |
+          repo="$PWD"
+          tmpdir=$(mktemp -d)
+          trap 'rm -rf "$tmpdir"' EXIT
+          cd "$tmpdir"
+          nix flake init -t "$repo#compiler-dev"
+          nix flake show
 
       # Verify the update script WORKS but we don't actually commit anything
       # in the test job.
-      - run: ./update
+      - run: |
+          ./update
+          unexpected=$(git status --porcelain | sed 's/^.. //' | grep -vE '^(mirrors\.json|sources\.json)$' || true)
+          if [ -n "$unexpected" ]; then
+            echo "unexpected files changed:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi

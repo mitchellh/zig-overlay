@@ -46,7 +46,7 @@
       default = self.apps.${system}.zig;
       zig = {
         type = "app";
-        program = self.packages.${system}.default.outPath;
+        program = "${self.packages.${system}.default}/bin/zig";
       };
     });
 
@@ -57,6 +57,7 @@
       lib.mapAttrs (system: pkgs: {
         default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
+            coreutils
             curl
             jq
             minisign
