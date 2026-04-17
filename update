@@ -7,7 +7,7 @@ curl -s 'https://ziglang.org/download/community-mirrors.txt' | jq -R '.' | jq -s
 # The well known public key for Zig
 PUBLIC_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U"
 
-# Grab the JSON and parse the version
+# Grab the main index.json (contains all releases + master)
 rm -rf index.json index.json.minisig
 curl -s 'https://ziglang.org/download/index.json' > index.json
 VERSION=$(cat index.json | jq -r '.master.version')
@@ -19,8 +19,52 @@ curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json" > versioned-index
 curl -s "https://ziglang.org/builds/zig-${VERSION}-index.json.minisig" > index.json.minisig
 minisign -V -P ${PUBLIC_KEY} -x index.json.minisig -m versioned-index.json
 
-# Build our new sources.json from the verified index
-cat versioned-index.json | jq '
+# The main index.json is not signed, but every individual tarball has a
+# .minisig signature. For release versions that only appear in the main
+# index (not in the verified versioned index), verify that a valid
+# signature exists for at least one tarball per version.
+NEW_VERSIONS=$(jq -rs '
+  . as [$main, $verified] |
+  [$main | keys[] | select(. != "master") | select(. as $k | ($verified | has($k)) | not)] |
+  .[]
+' index.json versioned-index.json)
+
+FAILED=""
+for v in $NEW_VERSIONS; do
+  # Get all tarball URLs for this version (only for our supported targets)
+  TARBALL_URLS=$(jq -r --arg v "$v" '
+    ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
+    .[$v] | to_entries[] | select(.key as $k | any($targets[]; . == $k)) | .value.tarball
+  ' index.json)
+
+  for TARBALL_URL in $TARBALL_URLS; do
+    TARBALL_FILE=$(basename "$TARBALL_URL")
+    echo "Verifying signature for ${v}: ${TARBALL_FILE}..."
+
+    curl -s "$TARBALL_URL" > "verify-${TARBALL_FILE}"
+    curl -s "${TARBALL_URL}.minisig" > "verify-${TARBALL_FILE}.minisig"
+    if ! minisign -V -P ${PUBLIC_KEY} -x "verify-${TARBALL_FILE}.minisig" -m "verify-${TARBALL_FILE}"; then
+      echo "ERROR: signature verification failed for ${v} (${TARBALL_FILE})"
+      FAILED="${FAILED} ${v}"
+    fi
+    rm -f "verify-${TARBALL_FILE}" "verify-${TARBALL_FILE}.minisig"
+  done
+done
+
+if [ -n "$FAILED" ]; then
+  echo "ERROR: Signature verification failed for:${FAILED}"
+  echo "Falling back to verified index only."
+  cp versioned-index.json merged-index.json
+else
+  # Start from the verified index and add only the newly verified releases
+  VERIFIED_VERSIONS=$(echo "$NEW_VERSIONS" | jq -R '.' | jq -s '.')
+  jq -s --argjson versions "$VERIFIED_VERSIONS" '
+    .[1] * (.[0] | to_entries | map(select(.key as $k | $versions | index($k))) | from_entries)
+  ' index.json versioned-index.json > merged-index.json
+fi
+
+# Build our new sources.json from the merged index
+cat merged-index.json | jq '
 ["aarch64-linux", "x86_64-linux", "aarch64-macos", "x86_64-macos", "aarch64-windows", "x86_64-windows"] as $targets |
 def todarwin(x): x | gsub("macos"; "darwin");
 def toentry(vsn; x):
@@ -61,4 +105,4 @@ cp sources.json sources.old.json
 jq -s '.[0] * .[1]' sources.old.json sources.new.json > sources.json
 
 # Clean up temp files
-rm -f index.json versioned-index.json index.json.minisig sources.old.json sources.new.json
+rm -f index.json versioned-index.json merged-index.json index.json.minisig sources.old.json sources.new.json
