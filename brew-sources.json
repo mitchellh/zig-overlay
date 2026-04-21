@@ -1,0 +1,164 @@
+{
+  "0.16.0": {
+    "aarch64-darwin": {
+      "version": "0.16.0",
+      "formula": "zig",
+      "bottles": {
+        "zig": {
+          "url": "https://ghcr.io/v2/homebrew/core/zig/blobs/sha256:8f023cdd84a92e2fff016a77fba8f46bbf6edbe8cbc86315ee682243ed882c5d",
+          "sha256": "8f023cdd84a92e2fff016a77fba8f46bbf6edbe8cbc86315ee682243ed882c5d",
+          "root": "zig/0.16.0"
+        },
+        "lld@21": {
+          "url": "https://ghcr.io/v2/homebrew/core/lld/21/blobs/sha256:661c8726f564040c92e7711eb3cf2349bae47d2b61fb685d9660226541fe3a26",
+          "sha256": "661c8726f564040c92e7711eb3cf2349bae47d2b61fb685d9660226541fe3a26",
+          "root": "lld@21/21.1.8_1"
+        },
+        "llvm@21": {
+          "url": "https://ghcr.io/v2/homebrew/core/llvm/21/blobs/sha256:1d8422fcaacee615ff78ba5ac530b8a141ce127087b3e861ba1faf972dc88256",
+          "sha256": "1d8422fcaacee615ff78ba5ac530b8a141ce127087b3e861ba1faf972dc88256",
+          "root": "llvm@21/21.1.8"
+        },
+        "zstd": {
+          "url": "https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:35b5150b27512a94ebaee7b4399aaa8adf42d247e6968319e4aeac3c05365281",
+          "sha256": "35b5150b27512a94ebaee7b4399aaa8adf42d247e6968319e4aeac3c05365281",
+          "root": "zstd/1.5.7_1"
+        }
+      }
+    },
+    "x86_64-darwin": {
+      "version": "0.16.0",
+      "formula": "zig",
+      "bottles": {
+        "zig": {
+          "url": "https://ghcr.io/v2/homebrew/core/zig/blobs/sha256:4a0c5f8df1c9bf09ca878d48d331024be0f9825dedfd7ab384cba59c8bd635c4",
+          "sha256": "4a0c5f8df1c9bf09ca878d48d331024be0f9825dedfd7ab384cba59c8bd635c4",
+          "root": "zig/0.16.0"
+        },
+        "lld@21": {
+          "url": "https://ghcr.io/v2/homebrew/core/lld/21/blobs/sha256:925d4df8fea1bf6e676095415ce8165ac5e539cd8bb1f3b143f3b480780c76b6",
+          "sha256": "925d4df8fea1bf6e676095415ce8165ac5e539cd8bb1f3b143f3b480780c76b6",
+          "root": "lld@21/21.1.8_1"
+        },
+        "llvm@21": {
+          "url": "https://ghcr.io/v2/homebrew/core/llvm/21/blobs/sha256:e58f968196af2f0db01f546cae78792d0b0cf885641c380ec3efa10817f52d13",
+          "sha256": "e58f968196af2f0db01f546cae78792d0b0cf885641c380ec3efa10817f52d13",
+          "root": "llvm@21/21.1.8"
+        },
+        "zstd": {
+          "url": "https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:8b8656acd6f30bcbbb9a033ae840afea299c9f0852f71b7540492b0fe7a36742",
+          "sha256": "8b8656acd6f30bcbbb9a033ae840afea299c9f0852f71b7540492b0fe7a36742",
+          "root": "zstd/1.5.7_1"
+        }
+      }
+    }
+  },
+  "0.15.2": {
+    "aarch64-darwin": {
+      "version": "0.15.2",
+      "formula": "zig@0.15",
+      "bottles": {
+        "zig@0.15": {
+          "url": "https://ghcr.io/v2/homebrew/core/zig/0.15/blobs/sha256:50e79a382a4310c562a5afbdc15435018a5e4d9ff9149729261670e6eaced4b6",
+          "sha256": "50e79a382a4310c562a5afbdc15435018a5e4d9ff9149729261670e6eaced4b6",
+          "root": "zig@0.15/0.15.2"
+        },
+        "lld@20": {
+          "url": "https://ghcr.io/v2/homebrew/core/lld/20/blobs/sha256:765b919096c9718ef2dd15103c7f9989956550dd0f4eb356dbfcda65ff96feb3",
+          "sha256": "765b919096c9718ef2dd15103c7f9989956550dd0f4eb356dbfcda65ff96feb3",
+          "root": "lld@20/20.1.8"
+        },
+        "llvm@20": {
+          "url": "https://ghcr.io/v2/homebrew/core/llvm/20/blobs/sha256:1fefd983fc606f81c1715af4dbecfa8fbe2967196e06bcac6d63baad878c511d",
+          "sha256": "1fefd983fc606f81c1715af4dbecfa8fbe2967196e06bcac6d63baad878c511d",
+          "root": "llvm@20/20.1.8"
+        },
+        "zstd": {
+          "url": "https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:35b5150b27512a94ebaee7b4399aaa8adf42d247e6968319e4aeac3c05365281",
+          "sha256": "35b5150b27512a94ebaee7b4399aaa8adf42d247e6968319e4aeac3c05365281",
+          "root": "zstd/1.5.7_1"
+        }
+      }
+    },
+    "x86_64-darwin": {
+      "version": "0.15.2",
+      "formula": "zig@0.15",
+      "bottles": {
+        "zig@0.15": {
+          "url": "https://ghcr.io/v2/homebrew/core/zig/0.15/blobs/sha256:fbf88162ef3557bbf834f9d2ca329e12ca3d0d383f52e073f48a61a63b650961",
+          "sha256": "fbf88162ef3557bbf834f9d2ca329e12ca3d0d383f52e073f48a61a63b650961",
+          "root": "zig@0.15/0.15.2"
+        },
+        "lld@20": {
+          "url": "https://ghcr.io/v2/homebrew/core/lld/20/blobs/sha256:d4a01c675382bd918542b3a035a8731dd338c94cf1d67769fa2aa5cc84ef4a15",
+          "sha256": "d4a01c675382bd918542b3a035a8731dd338c94cf1d67769fa2aa5cc84ef4a15",
+          "root": "lld@20/20.1.8"
+        },
+        "llvm@20": {
+          "url": "https://ghcr.io/v2/homebrew/core/llvm/20/blobs/sha256:62c1cbffed8c724ef4201147e6bc80830e25456f465b09ec904731256741be09",
+          "sha256": "62c1cbffed8c724ef4201147e6bc80830e25456f465b09ec904731256741be09",
+          "root": "llvm@20/20.1.8"
+        },
+        "zstd": {
+          "url": "https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:8b8656acd6f30bcbbb9a033ae840afea299c9f0852f71b7540492b0fe7a36742",
+          "sha256": "8b8656acd6f30bcbbb9a033ae840afea299c9f0852f71b7540492b0fe7a36742",
+          "root": "zstd/1.5.7_1"
+        }
+      }
+    }
+  },
+  "0.14.1": {
+    "aarch64-darwin": {
+      "version": "0.14.1",
+      "formula": "zig@0.14",
+      "bottles": {
+        "zig@0.14": {
+          "url": "https://ghcr.io/v2/homebrew/core/zig/0.14/blobs/sha256:bf2bb8d09f1eb6c311609f6d5699206199e06d4d60924e1d19c9e72ba0537b6a",
+          "sha256": "bf2bb8d09f1eb6c311609f6d5699206199e06d4d60924e1d19c9e72ba0537b6a",
+          "root": "zig@0.14/0.14.1"
+        },
+        "lld@19": {
+          "url": "https://ghcr.io/v2/homebrew/core/lld/19/blobs/sha256:58080e6765d2bb2177de344b622f7084a1d0897a6925888a561cac99f34113f5",
+          "sha256": "58080e6765d2bb2177de344b622f7084a1d0897a6925888a561cac99f34113f5",
+          "root": "lld@19/19.1.7"
+        },
+        "llvm@19": {
+          "url": "https://ghcr.io/v2/homebrew/core/llvm/19/blobs/sha256:37747f7b66d323ef07f18d471b928480a67ad93de8d5f7bdd3418367f1a8eac6",
+          "sha256": "37747f7b66d323ef07f18d471b928480a67ad93de8d5f7bdd3418367f1a8eac6",
+          "root": "llvm@19/19.1.7"
+        },
+        "zstd": {
+          "url": "https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:35b5150b27512a94ebaee7b4399aaa8adf42d247e6968319e4aeac3c05365281",
+          "sha256": "35b5150b27512a94ebaee7b4399aaa8adf42d247e6968319e4aeac3c05365281",
+          "root": "zstd/1.5.7_1"
+        }
+      }
+    },
+    "x86_64-darwin": {
+      "version": "0.14.1",
+      "formula": "zig@0.14",
+      "bottles": {
+        "zig@0.14": {
+          "url": "https://ghcr.io/v2/homebrew/core/zig/0.14/blobs/sha256:c7ac8f1ea8b09c4c9706597da2eef4317c56f46801be7fb699b11fde357dfb1d",
+          "sha256": "c7ac8f1ea8b09c4c9706597da2eef4317c56f46801be7fb699b11fde357dfb1d",
+          "root": "zig@0.14/0.14.1"
+        },
+        "lld@19": {
+          "url": "https://ghcr.io/v2/homebrew/core/lld/19/blobs/sha256:363576465702b57491a005d7ba9a12aa03b147810bfd8ef3ae563d608427a00d",
+          "sha256": "363576465702b57491a005d7ba9a12aa03b147810bfd8ef3ae563d608427a00d",
+          "root": "lld@19/19.1.7"
+        },
+        "llvm@19": {
+          "url": "https://ghcr.io/v2/homebrew/core/llvm/19/blobs/sha256:7739d54a784eafaa3c7d76a112bbafdd16214e60a58e60bc9a41240d2b981577",
+          "sha256": "7739d54a784eafaa3c7d76a112bbafdd16214e60a58e60bc9a41240d2b981577",
+          "root": "llvm@19/19.1.7"
+        },
+        "zstd": {
+          "url": "https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:8b8656acd6f30bcbbb9a033ae840afea299c9f0852f71b7540492b0fe7a36742",
+          "sha256": "8b8656acd6f30bcbbb9a033ae840afea299c9f0852f71b7540492b0fe7a36742",
+          "root": "zstd/1.5.7_1"
+        }
+      }
+    }
+  }
+}
