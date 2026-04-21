@@ -1,0 +1,127 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -p coreutils curl jq -i sh
+set -eu
+
+TMPDIR=$(mktemp -d)
+trap "rm -rf '$TMPDIR'" EXIT
+
+fetch() {
+  local url="$1" dest="$2"
+  curl -sfL "$url" -o "$dest"
+}
+
+BREW_API="https://formulae.brew.sh/api/formula"
+
+# ---------- Phase 1: Fetch all zig formula JSONs ----------
+
+echo "Fetching zig formula..." >&2
+fetch "$BREW_API/zig.json" "$TMPDIR/zig.json"
+
+VERSIONED=$(jq -r '.versioned_formulae[]' "$TMPDIR/zig.json")
+ZIG_FORMULAS="zig"
+
+for vf in $VERSIONED; do
+  echo "Fetching $vf formula..." >&2
+  fetch "$BREW_API/$vf.json" "$TMPDIR/$vf.json"
+  ZIG_FORMULAS="$ZIG_FORMULAS $vf"
+done
+
+# ---------- Phase 2: Recursively fetch dependency formulas ----------
+
+FETCHED="$ZIG_FORMULAS"
+
+resolve_deps() {
+  local queue="$1"
+  while [ -n "$queue" ]; do
+    local next_queue=""
+    for formula in $queue; do
+      local deps
+      deps=$(jq -r '.dependencies[]' "$TMPDIR/$formula.json" 2>/dev/null || true)
+      for dep in $deps; do
+        # Check if already fetched
+        case " $FETCHED " in
+          *" $dep "*) continue ;;
+        esac
+        echo "Fetching dependency $dep..." >&2
+        fetch "$BREW_API/$dep.json" "$TMPDIR/$dep.json"
+        FETCHED="$FETCHED $dep"
+        next_queue="$next_queue $dep"
+      done
+    done
+    queue="$(echo "$next_queue" | xargs)"
+  done
+}
+
+resolve_deps "$ZIG_FORMULAS"
+
+echo "All formulas fetched: $FETCHED" >&2
+
+# ---------- Phase 3: Assemble brew-sources.json ----------
+
+# Build a single JSON database from all fetched formula files
+DB="$TMPDIR/db.json"
+jq -s 'map({(.name): .}) | add' "$TMPDIR"/*.json > "$DB"
+
+# Pass zig formula names as a JSON array
+ZIG_NAMES_JSON=$(printf '%s\n' $ZIG_FORMULAS | jq -R . | jq -s .)
+
+echo "Assembling brew-sources.json..." >&2
+
+jq -n \
+  --argjson db "$(cat "$DB")" \
+  --argjson zig_formulas "$ZIG_NAMES_JSON" \
+'
+def best_tag(tags; prefs):
+  (prefs | map(select(. as $p | tags | has($p))) | first) // null;
+
+def bottle_entry(formula_name; tag):
+  $db[formula_name] as $f |
+  $f.bottle.stable.files[tag] as $b |
+  $f.versions.stable as $ver |
+  ($f.revision // 0) as $rev |
+  (if $rev > 0 then "\($ver)_\($rev)" else $ver end) as $pkg_ver |
+  {
+    url: $b.url,
+    sha256: $b.sha256,
+    root: "\(formula_name)/\($pkg_ver)"
+  };
+
+def platform_entry(zig_name; nix_plat; prefs):
+  $db[zig_name] as $zf |
+  $zf.bottle.stable.files as $files |
+  best_tag($files; prefs) as $zig_tag |
+  if $zig_tag == null then null
+  else
+    ($zf.dependencies // []) as $deps |
+    ([$deps[] | . as $dep |
+      $db[$dep].bottle.stable.files as $df |
+      best_tag($df; prefs) as $dep_tag |
+      if $dep_tag == null then empty
+      else {($dep): bottle_entry($dep; $dep_tag)}
+      end
+    ] | add // {}) as $dep_bottles |
+    {
+      version: $zf.versions.stable,
+      formula: zig_name,
+      bottles: ({(zig_name): bottle_entry(zig_name; $zig_tag)} + $dep_bottles)
+    }
+  end;
+
+[
+  $zig_formulas[] | . as $zf |
+  $db[$zf].versions.stable as $ver |
+  {
+    ($ver): (
+      {}
+      + (platform_entry($zf; "aarch64-darwin";
+           ["arm64_ventura","arm64_sonoma","arm64_sequoia","arm64_tahoe"])
+         | if . then {"aarch64-darwin": .} else {} end)
+      + (platform_entry($zf; "x86_64-darwin";
+           ["ventura","sonoma","sequoia","tahoe"])
+         | if . then {"x86_64-darwin": .} else {} end)
+    )
+  }
+] | add
+' > brew-sources.json
+
+echo "Wrote brew-sources.json" >&2

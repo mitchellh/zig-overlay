@@ -9,13 +9,14 @@ This repository is meant to be consumed primarily as a flake but the
 
 The flake outputs are documented in `flake.nix` but an overview:
 
-  * Default package and "app" is the latest released version
-  * `packages.<version>` for a tagged release
-  * `packages.master` for the latest nightly release
-  * `packages.master-<date>` for a nightly release
-  * `overlays.default` is an overlay that adds `zigpkgs` to be the packages
+* Default package and "app" is the latest released version
+* `packages.<version>` for a tagged release
+* `packages.master` for the latest nightly release
+* `packages.master-<date>` for a nightly release
+* `packages.brew.<version>` for a Homebrew bottle build (macOS only)
+* `overlays.default` is an overlay that adds `zigpkgs` to be the packages
     exposed by this flake
-  * `templates.compiler-dev` to setup a development environment for Zig
+* `templates.compiler-dev` to setup a development environment for Zig
     compiler development.
 
 ## Usage
@@ -45,6 +46,33 @@ $ nix shell 'github:mitchellh/zig-overlay#master-2021-02-13'
 $ nix shell 'github:mitchellh/zig-overlay#master'
 # open a shell with a specific zig version
 $ nix shell 'github:mitchellh/zig-overlay#"0.14.0"'
+```
+
+### Homebrew Bottles
+
+The `brew` package set provides Zig builds from Homebrew's official
+binary bottles. These are built from source by Homebrew with
+macOS-specific patches applied. The derivations are fully
+self-contained — all dylib dependencies (LLVM, LLD, zstd) are
+bundled and patched so no Homebrew installation is required at
+runtime.
+
+These can be useful because in some situations Homebrew backports
+more patches to their bottles than the official Zig releases to keep
+compatibility with newer macOS versions.
+
+Brew packages are only available on macOS (`aarch64-darwin` and
+`x86_64-darwin`).
+
+```sh
+# use the Homebrew-built Zig 0.16.0
+$ nix shell 'github:mitchellh/zig-overlay#brew."0.16.0"'
+```
+
+Via the overlay:
+
+```nix
+zigpkgs.brew."0.16.0"
 ```
 
 ### Compiler Development
@@ -80,7 +108,7 @@ we could miss a day. This is why historical dates beyond a certain point
 don't exist; they predate this overlay (or original overlays this derives
 from).
 
-2. The official Zig CI only generates a master release if the CI runs 
+2. The official Zig CI only generates a master release if the CI runs
 full green. During certain periods of development, a full day may go by
 where the master branch of the Zig compiler is broken. In this scenario,
 a master build (aka "nightly") is not built or released at all.
