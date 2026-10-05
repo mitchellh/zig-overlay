@@ -44508,5 +44508,37 @@
       "sha256": "6fc88bef531af7e567fe30bf60da1487b86833cbee84c7a2f3e317030aa5b660",
       "version": "0.1.1"
     }
+  },
+  "0.17.0": {
+    "x86_64-darwin": {
+      "url": "https://ziglang.org/download/0.17.0/zig-x86_64-macos-0.17.0.tar.xz",
+      "sha256": "4f9a1c5269aa17ebda5e6d3c2b89d6cbf36f7d2b22a0306e9ab98f25f95529c6",
+      "version": "0.17.0"
+    },
+    "aarch64-darwin": {
+      "url": "https://ziglang.org/download/0.17.0/zig-aarch64-macos-0.17.0.tar.xz",
+      "sha256": "b607e9b9234790a008116ae5bdb71c6243b84b9fb42a53a9e70fde41c06c536a",
+      "version": "0.17.0"
+    },
+    "x86_64-linux": {
+      "url": "https://ziglang.org/download/0.17.0/zig-x86_64-linux-0.17.0.tar.xz",
+      "sha256": "1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026",
+      "version": "0.17.0"
+    },
+    "aarch64-linux": {
+      "url": "https://ziglang.org/download/0.17.0/zig-aarch64-linux-0.17.0.tar.xz",
+      "sha256": "9e8d11661d4ae3bd57702a3832781e23ad151dde5798e16a5ccd503f65234ff8",
+      "version": "0.17.0"
+    },
+    "x86_64-windows": {
+      "url": "https://ziglang.org/download/0.17.0/zig-x86_64-windows-0.17.0.zip",
+      "sha256": "b5663f69581dcf391293fbf16c06cb80d81d806545ce618b4d0bab7f0eb8c428",
+      "version": "0.17.0"
+    },
+    "aarch64-windows": {
+      "url": "https://ziglang.org/download/0.17.0/zig-aarch64-windows-0.17.0.zip",
+      "sha256": "0a59d91fa1cb40cf068e9b0954434ce973500c7a2ea749f1e01af62cdab52d26",
+      "version": "0.17.0"
+    }
   }
 }
